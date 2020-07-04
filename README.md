@@ -6,5 +6,4 @@ CS361 Summer 2020 Project - Team 15 - Team Potato Timer
   * Team Member: Jingjing Yao
   * Team Member: Yuan Li
 
-![Image of High-Level Architecture]
-(images/High-Level-Architecture.jpeg)
+![](images/Pomodoro.jpeg)
