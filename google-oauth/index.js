@@ -7,7 +7,15 @@ require('./models/User');
 require('./services/passport');
 
 
-mongoose.connect(keys.mongoURI);
+// mongoose.connect(keys.mongoURI);
+
+mongoose.connect(keys.mongoURI, {useNewUrlParser: true, useUnifiedTopology: true}, function (err, db){
+	if (err) throw err;
+	console.log('db connected');
+	db.close();
+});
+
+
 
 const app = express();
 

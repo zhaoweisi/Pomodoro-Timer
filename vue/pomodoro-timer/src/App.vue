@@ -1,28 +1,39 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <button v-google-signin-button="clientId" class="google-signin-button"> Sign in with Google</button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  const keys = require('../config/keys');
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  data: () => ({
+    clientId: keys.googleClientID
+  }),
+  methods: {
+    OnGoogleAuthSuccess (idToken) {
+      console.log(idToken)
+      console.log("You have signed in")
+    },
+    OnGoogleAuthFail (error) {
+      console.log(error)
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.google-signin-button {
+  display: inline-block;
+  padding: 8px 40px;
+  border-radius: 8px;
+  background-color: #4285F4;
+  color: #fff;
+  box-shadow: 0 3px 0 #0f69ff;
+  vertical-align: middle;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  border: blue;
 }
 </style>
+

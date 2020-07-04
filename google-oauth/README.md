@@ -28,7 +28,7 @@
 
 
 ## Step2 - edit file
-In file `keys.js`
+In file `keys.js` 
 change `googleClientID` from last steps
 change `googleClientSecret` from last steps
 change `mongoURL`
