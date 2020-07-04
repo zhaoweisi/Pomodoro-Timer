@@ -7,4 +7,4 @@ CS361 Summer 2020 Project - Team 15 - Team Potato Timer
   * Team Member: Yuan Li
 
 ![Image of High-Level Architecture]
-(images/High-Level-Architecture.jpeg)
+(https://github.com/zhaoweisi/Pomodoro-Timer/blob/master/images/High-Level-Architecture.jpeg)
