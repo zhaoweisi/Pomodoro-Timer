@@ -19,11 +19,11 @@
 
 	Authorized JavaScript Origins:
 
-	http://localhost:5000
+	http://localhost:8080
 
 	Authorized redirect URI
 
-	http://localhost:5000/auth/google/callback                                                                                  
+	http://localhost:8080/auth/google/callback                                                                                  
 10. Copy your Client ID and Client Secret in a safe place so you can use it in your application in a future lecture. (ID and Secret were redacted from the screenshot)
 
 
