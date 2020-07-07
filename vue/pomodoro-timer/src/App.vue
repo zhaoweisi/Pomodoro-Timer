@@ -1,11 +1,24 @@
 <template>
+	<div>
+
+	<div id="signin-button">
   <button v-google-signin-button="clientId" class="google-signin-button"> Sign in with Google</button>
+	</div>
+
+	<div id="hyperlink">
+		<router-link to='/home'>Home Page</router-link>
+		<router-link to='/about'>About Page</router-link>
+		<router-view></router-view>
+	</div>
+
+	</div>
 </template>
 
 <script>
   const keys = require('../config/keys');
 
 export default {
+	name: 'App',
   data: () => ({
     clientId: keys.googleClientID
   }),
@@ -36,4 +49,3 @@ export default {
   border: blue;
 }
 </style>
-
