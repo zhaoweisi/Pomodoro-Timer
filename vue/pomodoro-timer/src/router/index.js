@@ -25,7 +25,9 @@ const routes = [
 ]
 const router = new VueRouter({
 	// map routes to components
-	routes
+	routes,
+	// remove # in url
+	mode: 'history'
 })
 
 // pass vue router instance to vue instance

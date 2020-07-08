@@ -6,8 +6,8 @@
 	</div>
 
 	<div id="hyperlink">
-		<router-link to='/home'>Home Page</router-link>
-		<router-link to='/about'>About Page</router-link>
+		<router-link to='/home' tag="button">Home Page</router-link>
+		<router-link to='/about' tag="button">About Page</router-link>
 		<router-view></router-view>
 	</div>
 
@@ -47,5 +47,9 @@ export default {
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
   border: blue;
+}
+
+.router-link-active {
+	color: #f00;
 }
 </style>
