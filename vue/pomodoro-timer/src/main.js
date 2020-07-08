@@ -13,10 +13,3 @@ new Vue({
 	router: router,			// vue router used in vue instance
   render: h => h(App),
 }).$mount('#app')
-
-
-axios({
-	url: 'http://localhost:5000/api/categories'
-}).then(res =>{
-	console.log(res);
-})
