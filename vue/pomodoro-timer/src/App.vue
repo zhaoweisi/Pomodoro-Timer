@@ -1,39 +1,34 @@
 <template>
-  <button v-google-signin-button="clientId" class="google-signin-button"> Sign in with Google</button>
+  
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png">
+    <h1>
+      Pomodoro Timer
+    </h1>
+    <LoginButton/>
+  </div>
 </template>
 
 <script>
-  const keys = require('../config/keys');
+import LoginButton from './components/LoginButton.vue'
 
 export default {
-  data: () => ({
-    clientId: keys.googleClientID
-  }),
-  methods: {
-    OnGoogleAuthSuccess (idToken) {
-      console.log(idToken)
-      console.log("You have signed in")
-    },
-    OnGoogleAuthFail (error) {
-      console.log(error)
-    }
+  name: 'App',
+  components: {
+    LoginButton
   }
 }
 </script>
 
 <style>
-.google-signin-button {
-  display: inline-block;
-  padding: 8px 40px;
-  border-radius: 8px;
-  background-color: #4285F4;
-  color: #fff;
-  box-shadow: 0 3px 0 #0f69ff;
-  vertical-align: middle;
-  font-size: 14px;
-  font-weight: bold;
-  font-family: 'Roboto', sans-serif;
-  border: blue;
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
+
 
