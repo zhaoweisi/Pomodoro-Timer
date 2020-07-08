@@ -1,10 +1,16 @@
 <template>
   <div>
   <button v-google-signin-button="clientId" class="google-signin-button" v-if="!isHidden" > Sign in with Google</button>
+  <br>
   <div v-if="isHidden"> Welcome, {{this.userFirstName}}</div>
   <br>
+  <img v-if="isHidden" v-bind:src="this.imgURL" /> 
+  <br>
+  <br>
   <div v-if="isHidden"> Your Name: {{this.userFullName}}</div>
-  <div v-if="isHidden"> Your Email: {{this.userEmail}}</div> 
+  <div v-if="isHidden"> Your Email: {{this.userEmail}}</div>
+  
+
   </div>
 </template>
 
@@ -17,14 +23,17 @@ export default {
     isHidden: false,
     userFirstName: '',
     userFullName : '',
-    userEmail: ''
+    userEmail: '',
+    imgURL: ''
   }),
   methods: {
     OnGoogleAuthSuccess (user) {
       console.log(user)
-      this.userFirstName = user.nW
-      this.userFullName = user.Bd
-      this.userEmail = user.Au
+      this.userFirstName = user.getGivenName()
+      this.userFullName = user.getName()
+      this.userEmail = user.getEmail()
+      this.imgURL = user.getImageUrl()
+
       console.log("You have signed in")
       this.isHidden = true
     },
