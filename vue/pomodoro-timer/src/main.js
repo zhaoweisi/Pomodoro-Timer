@@ -16,7 +16,7 @@ new Vue({
 
 
 axios({
-	url: ''
+	url: 'http://localhost:5000/api/categories'
 }).then(res =>{
 	console.log(res);
 })
