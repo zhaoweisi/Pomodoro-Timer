@@ -31,3 +31,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## Edit File
 In file `keys.js`
 change `googleClientID`
+
+In `vue/node_modules/vue-google-signin-button-directive/index.js`
+change line 27 to `vnode.context.OnGoogleAuthSuccess(googleUser.getBasicProfile())`
