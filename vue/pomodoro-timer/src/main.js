@@ -3,8 +3,6 @@ import App from './App.vue'
 import GoogleSignInButton from 'vue-google-signin-button-directive'
 // Use vue router
 import router from './router/index'
-// API request module
-import axios from 'axios'
 
 Vue.config.productionTip = false
 

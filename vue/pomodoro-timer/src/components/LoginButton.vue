@@ -11,14 +11,15 @@
     <div v-if="isHidden"> Your Name: {{this.userFullName}}</div>
     <div v-if="isHidden"> Your Email: {{this.userEmail}}</div>
 
-    <!-- Send Ajax request for categories -->
+    <!-- Send Ajax request for categories upon login -->
     <!-- <button v-if="isHidden" @click="getCategory()">See categories</button> -->
 		<br>
+		<div v-if="isHidden">
 		<h2> Your categories: </h2>
 		<ul>
 			<li v-for="item in categoryList" :key="item">{{item}}</li>
 		</ul>
-
+    </div>
   </div>
 
 </template>
@@ -69,29 +70,27 @@
 
       // Send ajax and load categories
       getCategory() {
+				// Reset list to empty before each load
 				this.categoryList = []
+				// Make request
         axios({
           method: 'get',
           url: 'http://localhost:5000/api/categories'
         }).then(res => {
           // console.log(res.data)
           for (let element of res.data) {
-            console.log(element.name)
+            // console.log(element.name)
+						// Add a category to list
 						this.categoryList.push(element.name)
           }
-
         })
       }
-
-      // showCategory() {
-      //
-      // }
     }
   }
 
 </script>
 
-<style>
+<style scoped>
 
   .google-signin-button {
     display: inline-block;

@@ -1,5 +1,4 @@
 <template>
-
   <!-- https://stackoverflow.com/questions/45000510/vue-js-error-component-template-should-contain-exactly-one-root-element -->
   <!-- Root needs only one component: one div -->
   <div>
@@ -11,14 +10,13 @@
       <LoginButton/>
     </div>
 
-    <div id="hyperlink">
+		<!-- Routes test -->
+    <!-- <div id="hyperlink">
       <router-link to='/home' tag="button">Home Page</router-link>
       <router-link to='/about' tag="button">About Page</router-link>
       <router-view></router-view>
-    </div>
-
+    </div> -->
   </div>
-
 </template>
 
 <script>
