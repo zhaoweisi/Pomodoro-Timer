@@ -4,12 +4,12 @@
   <br>
   <div v-if="isHidden"> Welcome, {{this.userFirstName}}</div>
   <br>
-  <img v-if="isHidden" v-bind:src="this.imgURL" /> 
+  <img v-if="isHidden" v-bind:src="this.imgURL" />
   <br>
   <br>
   <div v-if="isHidden"> Your Name: {{this.userFullName}}</div>
   <div v-if="isHidden"> Your Email: {{this.userEmail}}</div>
-  
+
 
   </div>
 </template>
@@ -29,11 +29,11 @@ export default {
   methods: {
     OnGoogleAuthSuccess (user) {
       console.log(user)
-      this.userFirstName = user.getGivenName()
-      this.userFullName = user.getName()
-      this.userEmail = user.getEmail()
-      this.imgURL = user.getImageUrl()
-
+      // console.log(typeof(user))
+			this.userFirstName = user.getBasicProfile().getGivenName()
+      this.userFullName = user.getBasicProfile().getName()
+      this.userEmail = user.getBasicProfile().getEmail()
+      this.imgURL = user.getBasicProfile().getImageUrl()
       console.log("You have signed in")
       this.isHidden = true
     },
