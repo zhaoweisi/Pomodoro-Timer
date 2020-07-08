@@ -45,10 +45,10 @@
       OnGoogleAuthSuccess(user) {
         console.log(user)
         // console.log(typeof(user))
-        this.userFirstName = user.getBasicProfile().getGivenName()
-        this.userFullName = user.getBasicProfile().getName()
-        this.userEmail = user.getBasicProfile().getEmail()
-        this.imgURL = user.getBasicProfile().getImageUrl()
+        this.userFirstName = user.getGivenName()
+        this.userFullName = user.getName()
+        this.userEmail = user.getEmail()
+        this.imgURL = user.getImageUrl()
         console.log('You have signed in')
         this.isHidden = true
         // Upon user login, load categories
