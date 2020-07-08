@@ -1,5 +1,6 @@
 <template>
-  <button v-google-signin-button="clientId" class="google-signin-button"> Sign in with Google</button>
+  <button v-google-signin-button="clientId" class="google-signin-button" v-if="!isHidden" v-on:click= "isHidden = true"> Sign in with Google</button>
+  
 </template>
 
 <script>
@@ -7,7 +8,8 @@
 
 export default {
   data: () => ({
-    clientId: keys.googleClientID
+    clientId: keys.googleClientID,
+    isHidden: false
   }),
   methods: {
     OnGoogleAuthSuccess (user) {
