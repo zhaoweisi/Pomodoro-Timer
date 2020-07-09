@@ -29,8 +29,8 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Edit File
-In file `keys.js`
+In file `frontend/config/keys.js`
 change `googleClientID`
 
-In `vue/node_modules/vue-google-signin-button-directive/index.js`
+In `frontend/node_modules/vue-google-signin-button-directive/index.js`
 change line 27 to `vnode.context.OnGoogleAuthSuccess(googleUser.getBasicProfile())`
