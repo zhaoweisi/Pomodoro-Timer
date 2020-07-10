@@ -1,14 +1,29 @@
 <template>
   <!-- https://stackoverflow.com/questions/45000510/vue-js-error-component-template-should-contain-exactly-one-root-element -->
   <!-- Root needs only one component: one div -->
-  <div>
-    <div id="app">
-      <img alt="Vue logo" src="./assets/logo.png">
+
+  <body>
+ 
+  <nav id="nav-main">
+  <ul>
+  <li><router-link to='/' >Home</router-link></li>
+  <li><router-link to='/about' >About</router-link></li>
+  </ul>
+  </nav><!-- /#nav-main -->
+<router-view></router-view>
+  <!-- <div id="app">
+      <img id= "logo" alt="potatologo" src="./assets/logo.png"> 
       <h1>
-        Pomodoro Timer
+        Potato Timer
       </h1>
+      <div id="loginButton">
       <LoginButton/>
-    </div>
+      </div>
+      <!~~ #loginButton ~~>
+  </div> -->
+  
+  <!-- #app -->
+   
 
 		<!-- Routes test -->
     <!-- <div id="hyperlink">
@@ -16,35 +31,30 @@
       <router-link to='/about' tag="button">About Page</router-link>
       <router-view></router-view>
     </div> -->
-  </div>
+
+<footer id="footer">
+<p class="copyright">&copy;2020 Potato Timer &bull; Site design by Team15 &bull; All Rights Reserved</p>
+</footer>
+
+</body>
+
 </template>
+
 
 <script>
 
-  import LoginButton from './components/LoginButton.vue'
+  // import LoginButton from './components/LoginButton.vue'
 
   export default {
     name: 'App',
     components: {
-      LoginButton
+      // LoginButton
     }
   }
 
 </script>
 
+
 <style>
-
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
-
-  .router-link-active {
-    color: #f00;
-  }
-
+  @import './assets/styles/test.css';
 </style>
