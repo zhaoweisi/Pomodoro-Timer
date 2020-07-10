@@ -2,8 +2,9 @@
 import VueRouter from 'vue-router'
 import Vue from 'vue'
 // import Home from '../components/Home'
-// import About from '../components/About'
-import App from '../App.vue'
+import About from '../components/About'
+import Login from '../components/Login'
+// import App from '../App.vue'
 
 // 1. install VueRouter plugin
 Vue.use(VueRouter)
@@ -24,7 +25,11 @@ const routes = [
 	// Landing page, load App component
 	{
 		path: '/',
-		component: App
+		component: Login
+	},
+	{
+		path: '/about',
+		component: About
 	}
 ]
 
