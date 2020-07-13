@@ -1,7 +1,10 @@
 <template>
 
   <div>
-    <button v-google-signin-button="clientId" class="google-signin-button" v-if="!isHidden"> Sign in with Google</button>
+    <button v-google-signin-button="clientId" class="google-signin-button" v-if="!isHidden">
+      <img id="logo" alt="Google sign-in"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+      Sign in with Google</button>
     <br>
     <div v-if="isHidden"> Welcome, {{this.userFirstName}}</div>
     <br>
@@ -13,12 +16,12 @@
 
     <!-- Send Ajax request for categories upon login -->
     <!-- <button v-if="isHidden" @click="getCategory()">See categories</button> -->
-		<br>
-		<div v-if="isHidden">
-		<h2> Your categories: </h2>
-		<ul>
-			<li v-for="item in categoryList" :key="item">{{item}}</li>
-		</ul>
+    <br>
+    <div v-if="isHidden">
+      <h2> Your categories: </h2>
+      <ul>
+        <li v-for="item in categoryList" :key="item">{{item}}</li>
+      </ul>
     </div>
   </div>
 
@@ -38,8 +41,8 @@
       userFullName: '',
       userEmail: '',
       imgURL: '',
-			//category
-			categoryList: []
+      //category
+      categoryList: []
     }),
     methods: {
       OnGoogleAuthSuccess(user) {
@@ -70,9 +73,9 @@
 
       // Send ajax and load categories
       getCategory() {
-				// Reset list to empty before each load
-				this.categoryList = []
-				// Make request
+        // Reset list to empty before each load
+        this.categoryList = []
+        // Make request
         axios({
           method: 'get',
           url: 'http://localhost:5000/api/categories'
@@ -80,8 +83,8 @@
           // console.log(res.data)
           for (let element of res.data) {
             // console.log(element.name)
-						// Add a category to list
-						this.categoryList.push(element.name)
+            // Add a category to list
+            this.categoryList.push(element.name)
           }
         })
       }
@@ -91,7 +94,6 @@
 </script>
 
 <style scoped>
-
   .google-signin-button {
     display: inline-block;
     padding: 8px 40px;
@@ -105,5 +107,8 @@
     font-family: 'Roboto', sans-serif;
     border: blue;
   }
-
+  #logo {
+    margin-right:5px;
+    width:20px;
+  }
 </style>
