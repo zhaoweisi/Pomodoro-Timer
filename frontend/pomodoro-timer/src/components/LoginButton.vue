@@ -1,7 +1,9 @@
 <template>
 
   <div>
-    <button v-google-signin-button="clientId" class="google-signin-button" v-if="!isHidden"> Sign in with Google</button>
+    <button v-google-signin-button="clientId" class="google-signin-button" v-if="!isHidden">
+      <img alt="Google sign-in" src="../assets/icons/btn_google_signin_dark_normal_web.png" />
+      </button>
     <br>
     <div v-if="isHidden"> Welcome, {{this.userFirstName}}</div>
     <br>
@@ -179,19 +181,14 @@
 </script>
 
 <style scoped>
-
   .google-signin-button {
     display: inline-block;
-    padding: 8px 40px;
-    border-radius: 8px;
-    background-color: #4285f4;
-    color: #fff;
-    box-shadow: 0 3px 0 #0f69ff;
+    background-color:transparent;
     vertical-align: middle;
-    font-size: 14px;
-    font-weight: bold;
-    font-family: 'Roboto', sans-serif;
-    border: blue;
+    border-style: unset;
   }
 
+img {
+  border-radius: 0px;
+}
 </style>
