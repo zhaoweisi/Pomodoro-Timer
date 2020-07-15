@@ -1,12 +1,12 @@
 /* global gapi */
 
 // This is your plugin object. It can be exported to be used anywhere.
-const LoginPlugin = {
+const LogoutPlugin = {
     // The install method is all that needs to exist on the plugin object.
     // It takes the global Vue object as well as user-defined options.
     install(Vue) {
 
-        Vue.directive('google-signin-button', {
+        Vue.directive('google-signout-button', {
             bind: function (el, binding, vnode) {
               CheckComponentMethods()
               let clientId = binding.value
@@ -23,27 +23,19 @@ const LoginPlugin = {
                     cookiepolicy: 'single_host_origin'
                   })
                   auth2.attachClickHandler(el, {},
-                    OnSuccess,
-                    Onfail
+                    OnsignOut
                   )
                 })
               }
-              function OnSuccess(googleUser) {
-                vnode.context.OnGoogleAuthSuccess(googleUser.getBasicProfile())
-                //googleUser.disconnect()
-              }
-              function Onfail(error) {
-                vnode.context.OnGoogleAuthFail(error)
-              }
+              
 
+              function OnsignOut(googleUser) {
+                vnode.context.OnGoogleAuthSignOut(googleUser.disconnect())
+              }
 
               function CheckComponentMethods() {
-                if (!vnode.context.OnGoogleAuthSuccess) {
-                  throw new Error('The method OnGoogleAuthSuccess must be defined on the component')
-                }
-          
-                if (!vnode.context.OnGoogleAuthFail) {
-                  throw new Error('The method OnGoogleAuthFail must be defined on the component')
+                if (!vnode.context.OnGoogleAuthSignOut) {
+                  throw new Error('The method OnGoogleAuthSignOut must be defined on the component')
                 }
               }
             }
@@ -54,10 +46,10 @@ const LoginPlugin = {
         // Anything added to a mixin will be injected into all components.
         // In this case, the mounted() method runs when the component is added to the DOM.
         mounted() {
-          console.log('Mounted!');
+          console.log('Mounted 2!');
         }
       });
     }
   };
   
-  export default LoginPlugin;
+  export default LogoutPlugin;
