@@ -42,7 +42,10 @@
       clientId: keys.googleClientID,
       isHidden: false,
 <<<<<<< HEAD
+<<<<<<< HEAD
       isSignOutButtonHidden: false,
+=======
+>>>>>>> parent of 1970a1d... Merge pull request #5 from zhaoweisi/CategoryUpdate
 =======
 >>>>>>> parent of 1970a1d... Merge pull request #5 from zhaoweisi/CategoryUpdate
       userFirstName: '',
@@ -63,7 +66,10 @@
         console.log('You have signed in')
         this.isHidden = true
 <<<<<<< HEAD
+<<<<<<< HEAD
         this.isSignOutButtonHidden = true
+=======
+>>>>>>> parent of 1970a1d... Merge pull request #5 from zhaoweisi/CategoryUpdate
 =======
 >>>>>>> parent of 1970a1d... Merge pull request #5 from zhaoweisi/CategoryUpdate
         // Upon user login, load categories
@@ -100,6 +106,7 @@
           }
         })
 <<<<<<< HEAD
+<<<<<<< HEAD
       },
       OnGoogleAuthSignOut() {
         console.log("You have signed out")
@@ -107,6 +114,9 @@
         this.isSignOutButtonHidden = false
       }
 
+=======
+      }
+>>>>>>> parent of 1970a1d... Merge pull request #5 from zhaoweisi/CategoryUpdate
 =======
       }
 >>>>>>> parent of 1970a1d... Merge pull request #5 from zhaoweisi/CategoryUpdate
