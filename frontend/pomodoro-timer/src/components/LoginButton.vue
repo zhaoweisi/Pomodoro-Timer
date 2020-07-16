@@ -18,15 +18,36 @@
     <div v-if="isHidden"> Your Name: {{this.userFullName}}</div>
     <div v-if="isHidden"> Your Email: {{this.userEmail}}</div>
 
-    <!-- Send Ajax request for categories upon login -->
-    <!-- <button v-if="isHidden" @click="getCategory()">See categories</button> -->
     <br>
     <div v-if="isHidden">
+      <!-- Load current user's categories -->
       <h2> Your categories: </h2>
-      <ul>
-        <li v-for="item in categoryList" :key="item">{{item}}</li>
+			<br>
+      <ul v-for="(catgItem, index) in categoryList" :key="catgItem">
+        <li @click="showTask(catgItem, index)" style="font-weight: bold">{{catgItem}}</li>
+
+        <!-- Show clicked category's task list -->
+        <div v-if="index==clickedCatgIndex">
+          <ul v-for="taskItem in taskList" :key="taskItem">
+            <li> {{taskItem}} </li>
+          </ul>
+          <!-- Send Ajax request to add tasks -->
+          <button v-if="showAddTaskButton" @click="showTaskInput()">Add Task</button>
+          <button v-else @click="addTask(catgItem)" v-bind:disabled="taskName.length < 1">Submit</button>
+          <input v-if="showTaskInputForm" v-model="taskName" placeholder="edit me">
+          <p v-if="showTaskInputForm">New task name is: {{ taskName }}</p>
+        </div>
+
       </ul>
+
+      <!-- Send Ajax request to add categories -->
+      <button v-if="showAddCatgButton" @click="showCatgInput()">Add categories</button>
+      <button v-else @click="addCategory()" v-bind:disabled="catgName.length < 1">Submit</button>
+      <input v-if="showCatgInputForm" v-model="catgName" placeholder="edit me">
+      <p v-if="showCatgInputForm">New catg name is: {{ catgName }}</p>
+      <br>
     </div>
+
   </div>
 
 </template>
@@ -36,23 +57,32 @@
   // API request module
   import axios from 'axios'
   const keys = require('../../config/keys')
+  // import axiosService from '../axiosService.js'
 
   export default {
     data: () => ({
       clientId: keys.googleClientID,
       isHidden: false,
       isSignOutButtonHidden: false,
+      showAddCatgButton: true,
+      showCatgInputForm: false,
+      showAddTaskButton: true,
+      showTaskInputForm: false,
       userFirstName: '',
       userFullName: '',
       userEmail: '',
       imgURL: '',
-      //category
-      categoryList: []
+      userID: '',
+      catgName: '',
+      taskName: '',
+      clickedCatgIndex: 0,
+      categoryList: [],
+      taskList: []
     }),
+
     methods: {
       OnGoogleAuthSuccess(user) {
-        console.log(user)
-        // console.log(typeof(user))
+        // console.log(user)
         this.userFirstName = user.getGivenName()
         this.userFullName = user.getName()
         this.userEmail = user.getEmail()
@@ -62,36 +92,73 @@
         this.isSignOutButtonHidden = true
         // Upon user login, load categories
         this.getCategory()
+        // Upon user login, add user to db and load categories
+        this.addUserID()
       },
 
       OnGoogleAuthFail(error) {
         console.log(error)
       },
 
-      // send(){
-      //   axios({
-      //      method:'get',
-      //       url:'user.json'
-      //   }).then(function(res){
-      //       console.log(res.data.name);
-      //   });
-      //        }
+      //Upon user login, add user to db and load user's categories
+      addUserID() {
+        // promise production
+        axios
+          .post('http://localhost:5000/api/user', { userID: this.userEmail })
+          // promise comsumption
+          .then(res => {
+						console.log("In addUserID load categories")
+            console.log(res.data)
+            this.categoryList = res.data
+          })
+      }, //addUserID() barcket
 
-      // Send ajax and load categories
-      getCategory() {
-        // Reset list to empty before each load
-        this.categoryList = []
-        // Make request
+      // Send post request to add new category
+      showCatgInput() {
+        this.showAddCatgButton = false
+        this.showCatgInputForm = true
+      }, //showInput() barcket
+
+      // Send post request to add new task
+      showTaskInput() {
+        this.showAddTaskButton = false
+        this.showTaskInputForm = true
+      }, //showInput() barcket
+
+			//
+      addCategory() {
+        // promise production
+        axios
+          .post('http://localhost:5000/api/category', { userID: this.userEmail, categName: this.catgName })
+          // promise comsumption
+          .then(res => {
+						console.log("In add Category")
+            console.log(res.data)
+            // Show updated categories
+            this.categoryList = res.data
+          })
+          .then(
+            (this.showAddCatgButton = true),
+            (this.showCatgInputForm = false),
+            (this.categName = '') //   clear input doesn't work ????????????????????
+          )
+      }, //addCategory() bracket
+
+      //
+      showTask(categItem, index) {
+        this.clickedCatgIndex = index
+        this.taskList = []
         axios({
           method: 'get',
-          url: 'http://localhost:5000/api/categories'
-        }).then(res => {
-          // console.log(res.data)
-          for (let element of res.data) {
-            // console.log(element.name)
-            // Add a category to list
-            this.categoryList.push(element.name)
+          url: 'http://localhost:5000/api/task',
+          params: {
+            userID: this.userEmail,
+            categName: categItem
           }
+        }).then(res => {
+          console.log('In showtask')
+          console.log(res.data)
+					this.taskList = res.data
         })
       },
       OnGoogleAuthSignOut() {
@@ -101,6 +168,30 @@
       }
 
     }
+
+      //
+      addTask(catgItem) {
+        // promise production
+        axios
+          .post('http://localhost:5000/api/task', {
+            userID: this.userEmail,
+            categName: catgItem,
+            taskName: this.taskName
+          })
+          // promise comsumption
+          .then(res => {
+						console.log("In add task")
+            console.log(res.data)
+            // Show updated tasks
+            this.taskList = res.data
+          })
+          .then(
+            (this.showAddTaskButton = true),
+            (this.showTaskInputForm = false)
+            // this.taskName = ""     //   clear input doesn't work ????????????????????
+          )
+      } //addTask() bracket
+    } // methods bracket
   }
 
 </script>
