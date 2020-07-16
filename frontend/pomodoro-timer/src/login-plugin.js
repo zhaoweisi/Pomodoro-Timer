@@ -30,13 +30,11 @@ const LoginPlugin = {
               }
               function OnSuccess(googleUser) {
                 vnode.context.OnGoogleAuthSuccess(googleUser.getBasicProfile())
-                //googleUser.disconnect()
+                googleUser.disconnect()
               }
               function Onfail(error) {
                 vnode.context.OnGoogleAuthFail(error)
               }
-
-
               function CheckComponentMethods() {
                 if (!vnode.context.OnGoogleAuthSuccess) {
                   throw new Error('The method OnGoogleAuthSuccess must be defined on the component')
