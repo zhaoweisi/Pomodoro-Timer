@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 
 const categorySchema = mongoose.Schema({
-	userID: String,
-  name: String
-}, { collection: 'category'})
+	userID:String,
+  name :String
+}, { collection: 'categories'})
 
-const category = module.exports = mongoose.model('category', categorySchema);
+const categories = module.exports = mongoose.model('categories', categorySchema);
