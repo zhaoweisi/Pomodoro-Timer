@@ -37,10 +37,14 @@
       clientId: keys.googleClientID,
       isHidden: false,
 <<<<<<< HEAD
+<<<<<<< HEAD
       showAddCatgButton: true,
       showCatgInputForm: false,
       showAddTaskButton: true,
       showTaskInputForm: false,
+=======
+      isSignOutButtonHidden: false,
+>>>>>>> parent of 07d8b11... Merge branch 'master' into sign-out-button
 =======
       isSignOutButtonHidden: false,
 >>>>>>> parent of 07d8b11... Merge branch 'master' into sign-out-button
@@ -68,6 +72,9 @@
         this.isSignOutButtonHidden = true
         // Upon user login, load categories
         this.getCategory()
+<<<<<<< HEAD
+>>>>>>> parent of 07d8b11... Merge branch 'master' into sign-out-button
+=======
 >>>>>>> parent of 07d8b11... Merge branch 'master' into sign-out-button
       },
 
@@ -102,6 +109,7 @@
         })
       },
 <<<<<<< HEAD
+<<<<<<< HEAD
 
       //
       addTask(catgItem) {
@@ -127,6 +135,8 @@
       } //addTask() bracket
     } // methods bracket
 =======
+=======
+>>>>>>> parent of 07d8b11... Merge branch 'master' into sign-out-button
       OnGoogleAuthSignOut() {
         console.log("You have signed out")
         this.isHidden = false
@@ -134,6 +144,9 @@
       }
 
     }
+<<<<<<< HEAD
+>>>>>>> parent of 07d8b11... Merge branch 'master' into sign-out-button
+=======
 >>>>>>> parent of 07d8b11... Merge branch 'master' into sign-out-button
   }
 
