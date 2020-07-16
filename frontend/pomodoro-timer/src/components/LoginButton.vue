@@ -5,6 +5,11 @@
       <img alt="Google sign-in" src="../assets/icons/btn_google_signin_dark_normal_web.png" />
       </button>
     <br>
+    <button v-google-signout-button="clientId" class="google-signout-button" v-if="isSignOutButtonHidden"> Sign out
+      </button>
+    <br>
+    <br>
+    <br>
     <div v-if="isHidden"> Welcome, {{this.userFirstName}}</div>
     <br>
     <img v-if="isHidden" v-bind:src="this.imgURL" />
@@ -58,6 +63,7 @@
     data: () => ({
       clientId: keys.googleClientID,
       isHidden: false,
+      isSignOutButtonHidden: false,
       showAddCatgButton: true,
       showCatgInputForm: false,
       showAddTaskButton: true,
@@ -83,6 +89,9 @@
         this.imgURL = user.getImageUrl()
         console.log('You have signed in')
         this.isHidden = true
+        this.isSignOutButtonHidden = true
+        // Upon user login, load categories
+        this.getCategory()
         // Upon user login, add user to db and load categories
         this.addUserID()
       },
@@ -152,6 +161,13 @@
 					this.taskList = res.data
         })
       },
+      OnGoogleAuthSignOut() {
+        console.log("You have signed out")
+        this.isHidden = false
+        this.isSignOutButtonHidden = false
+      }
+
+    }
 
       //
       addTask(catgItem) {
@@ -186,6 +202,19 @@
     background-color:transparent;
     vertical-align: middle;
     border-style: unset;
+  }
+  .google-signout-button {
+    display: inline-block;
+    background: white;
+    color: #444;
+    width: 190px;
+    height: 50px;
+    border-radius: 5px;
+    border: thin solid #888;
+    box-shadow: 1px 1px 1px grey;
+    white-space: nowrap;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
   }
 
 img {
