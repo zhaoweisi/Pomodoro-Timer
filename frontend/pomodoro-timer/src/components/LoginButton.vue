@@ -36,18 +36,6 @@
     data: () => ({
       clientId: keys.googleClientID,
       isHidden: false,
-<<<<<<< HEAD
-<<<<<<< HEAD
-      showAddCatgButton: true,
-      showCatgInputForm: false,
-      showAddTaskButton: true,
-      showTaskInputForm: false,
-=======
-      isSignOutButtonHidden: false,
->>>>>>> parent of 07d8b11... Merge branch 'master' into sign-out-button
-=======
-      isSignOutButtonHidden: false,
->>>>>>> parent of 07d8b11... Merge branch 'master' into sign-out-button
       userFirstName: '',
       userFullName: '',
       userEmail: '',
@@ -65,17 +53,6 @@
         this.imgURL = user.getImageUrl()
         console.log('You have signed in')
         this.isHidden = true
-<<<<<<< HEAD
-        // Upon user login, add user to db and load categories
-        this.addUserID()
-=======
-        this.isSignOutButtonHidden = true
-        // Upon user login, load categories
-        this.getCategory()
-<<<<<<< HEAD
->>>>>>> parent of 07d8b11... Merge branch 'master' into sign-out-button
-=======
->>>>>>> parent of 07d8b11... Merge branch 'master' into sign-out-button
       },
 
       OnGoogleAuthFail(error) {
@@ -107,47 +84,8 @@
             this.categoryList.push(element.name)
           }
         })
-      },
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-      //
-      addTask(catgItem) {
-        // promise production
-        axios
-          .post('http://localhost:5000/api/task', {
-            userID: this.userEmail,
-            categName: catgItem,
-            taskName: this.taskName
-          })
-          // promise comsumption
-          .then(res => {
-						console.log("In add task")
-            console.log(res.data)
-            // Show updated tasks
-            this.taskList = res.data
-          })
-          .then(
-            (this.showAddTaskButton = true),
-            (this.showTaskInputForm = false)
-            // this.taskName = ""     //   clear input doesn't work ????????????????????
-          )
-      } //addTask() bracket
-    } // methods bracket
-=======
-=======
->>>>>>> parent of 07d8b11... Merge branch 'master' into sign-out-button
-      OnGoogleAuthSignOut() {
-        console.log("You have signed out")
-        this.isHidden = false
-        this.isSignOutButtonHidden = false
       }
-
     }
-<<<<<<< HEAD
->>>>>>> parent of 07d8b11... Merge branch 'master' into sign-out-button
-=======
->>>>>>> parent of 07d8b11... Merge branch 'master' into sign-out-button
   }
 
 </script>
