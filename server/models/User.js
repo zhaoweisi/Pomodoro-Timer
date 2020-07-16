@@ -7,5 +7,3 @@ const userSchema = new Schema({
 });
 
 mongoose.model('users', userSchema);
-
-// const category = module.exports = mongoose.model('category', categorySchema);
