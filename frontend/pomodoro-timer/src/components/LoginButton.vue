@@ -41,7 +41,10 @@
     data: () => ({
       clientId: keys.googleClientID,
       isHidden: false,
+<<<<<<< HEAD
       isSignOutButtonHidden: false,
+=======
+>>>>>>> parent of 1970a1d... Merge pull request #5 from zhaoweisi/CategoryUpdate
       userFirstName: '',
       userFullName: '',
       userEmail: '',
@@ -59,7 +62,10 @@
         this.imgURL = user.getImageUrl()
         console.log('You have signed in')
         this.isHidden = true
+<<<<<<< HEAD
         this.isSignOutButtonHidden = true
+=======
+>>>>>>> parent of 1970a1d... Merge pull request #5 from zhaoweisi/CategoryUpdate
         // Upon user login, load categories
         this.getCategory()
       },
@@ -93,6 +99,7 @@
             this.categoryList.push(element.name)
           }
         })
+<<<<<<< HEAD
       },
       OnGoogleAuthSignOut() {
         console.log("You have signed out")
@@ -100,6 +107,9 @@
         this.isSignOutButtonHidden = false
       }
 
+=======
+      }
+>>>>>>> parent of 1970a1d... Merge pull request #5 from zhaoweisi/CategoryUpdate
     }
   }
 
