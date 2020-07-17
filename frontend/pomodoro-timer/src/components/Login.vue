@@ -3,7 +3,7 @@
   <!-- Root needs only one component: one div -->
 
   <div id="login">
-      <img id= "logo" alt="potatologo" src="@/assets/logo.jpeg"> 
+      <img id= "logo" alt="potatologo" src="@/assets/home_Artwork.png" width=500> 
       <h1>
         Potato Timer
       </h1>

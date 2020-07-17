@@ -4,7 +4,7 @@
 <body>
 <div id="about">
 <div id="smile"> 
-<img alt="a smile potato" src="@/assets/chooseme.jpeg" width=300> 
+<img alt="a smile potato" src="@/assets/about_Artwork.png" width=500> 
 </div>
 <h1>About Potato Timer</h1>
 
