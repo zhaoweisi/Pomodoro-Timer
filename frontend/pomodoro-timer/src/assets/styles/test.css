@@ -123,13 +123,3 @@ a:focus {
   .router-link-active {
     color: #f00;
   }
-
-  .csstest {
-    font-family: 'Lato', sans-serif;
-    font-size: 38px;
-    font-weight: 300;
-    line-height: 58px;
-    margin: 0 0 58px;
-  }
-  
-  

@@ -58,4 +58,5 @@
 
 <style>
   @import './assets/styles/test.css';
+  @import './assets/styles/timer.css';
 </style>
