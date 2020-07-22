@@ -29,5 +29,5 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Edit File
-In file `frontend/config/keys.js`
+In file `frontend/pomodoro-timer/config/keys.js`
 change `googleClientID`

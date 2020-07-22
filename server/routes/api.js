@@ -46,45 +46,45 @@ router.post('/user', async(req,res) => {
 
 //Post category to DB
 router.post('/category', async(req,res) => {
-	// Get category collection from DB
-	const db = await loadDB();
-	const category = db.collection('Category');
-	// Insert category with userID (email)
-	await category.insertOne({
-		userID: req.body.userID,
-		categName: req.body.categName
-	});
+  // Get category collection from DB
+  const db = await loadDB();
+  const category = db.collection('Category');
+  // Insert category with userID (email)
+  await category.insertOne({
+    userID: req.body.userID,
+    categName: req.body.categName
+  });
 
-	// Get categories from db based on query criteria
-	let temp_res = await category.find({userID: req.body.userID}).toArray();
-	// Parse result before sending back
-	let temp_list = [];
-	for (let element of temp_res) {
-		temp_list.push(element.categName)
-	}
-	// Send back updated categories
-	res.send(temp_list)
-	// res.send(await category.find({userID: req.body.userID}).toArray());
+  // Get categories from db based on query criteria
+  let temp_res = await category.find({userID: req.body.userID}).toArray();
+  // Parse result before sending back
+  let temp_list = [];
+  for (let element of temp_res) {
+    temp_list.push(element.categName)
+  }
+  // Send back updated categories
+  res.send(temp_list)
+  // res.send(await category.find({userID: req.body.userID}).toArray());
 });
 
 
 
 //Get task from DB
 router.get('/task', async(req,res) => {
-	// Get category collection from DB
-	const db = await loadDB();
-	const task = db.collection('Task');
-	// console.log(req.query);
-	// Get tasks from db based on query criteria
-	let temp_res = await task.find({userID: req.query.userID, categName: req.query.categName}).toArray();
-	// Parse result before sending back
-	let temp_list = [];
-	for (let element of temp_res) {
-		temp_list.push(element.taskName)
-	}
-	// Send back tasks under current category
-	res.send(temp_list)
-	// res.send(await task.find({userID: req.query.userID, categName: req.query.categName}).toArray());
+  // Get category collection from DB
+  const db = await loadDB();
+  const task = db.collection('Task');
+  // console.log(req.query);
+  // Get tasks from db based on query criteria
+  let temp_res = await task.find({userID: req.query.userID, categName: req.query.categName}).toArray();
+  // Parse result before sending back
+  let temp_list = [];
+  for (let element of temp_res) {
+    temp_list.push(element.taskName)
+  }
+  // Send back tasks under current category
+  res.send(temp_list)
+  // res.send(await task.find({userID: req.query.userID, categName: req.query.categName}).toArray());
 });
 
 
@@ -101,16 +101,16 @@ router.post('/task', async(req,res) => {
 		taskSpan: req.body.taskSpan
 	});
 
-	// Get tasks from db based on query criteria
-	let temp_res = await task.find({userID: req.body.userID, categName: req.body.categName}).toArray();
-	// Parse result before sending back
-	let temp_list = [];
-	for (let element of temp_res) {
-		temp_list.push(element.taskName)
-	}
-	// Send back updated tasks
-	res.send(temp_list)
-	// res.send(await task.find({userID: req.body.userID, categName: req.body.categName}).toArray());
+  // Get tasks from db based on query criteria
+  let temp_res = await task.find({userID: req.body.userID, categName: req.body.categName}).toArray();
+  // Parse result before sending back
+  let temp_list = [];
+  for (let element of temp_res) {
+    temp_list.push(element.taskName)
+  }
+  // Send back updated tasks
+  res.send(temp_list)
+  // res.send(await task.find({userID: req.body.userID, categName: req.body.categName}).toArray());
 });
 
 
@@ -189,18 +189,18 @@ async function loadDB() {
       useNewUrlParser: true, useUnifiedTopology: true
     }
   );
-	return client.db('Timer');
+  return client.db('Timer');
 }
 
 module.exports = router;
 
 // try {
-// 	const user = await loadUserCollection();
-// 	console.log(user);
-// 	user.insertOne({
-// 		_id: req.body.userID
-// 	});
-// 	res.status(201).send();
+//  const user = await loadUserCollection();
+//  console.log(user);
+//  user.insertOne({
+//    _id: req.body.userID
+//  });
+//  res.status(201).send();
 // } catch(e) {
-// 	console.log(e);
+//  console.log(e);
 // };

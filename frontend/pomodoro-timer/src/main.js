@@ -12,6 +12,7 @@ Vue.config.productionTip = false
 
 new Vue({
   LoginPlugin,
+  LogoutPlugin,
 	router: router,			// vue router used in vue instance
   render: h => h(App),
 }).$mount('#app')

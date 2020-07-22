@@ -50,7 +50,6 @@
     <!-- Category and task list -->
     <br> <br>
     <div v-if="isHidden">
-      <!-- Load current user's categories -->
       <h2> Your categories: </h2>
       <p> Click category name to add or show tasks</p>
       <br>
@@ -72,15 +71,7 @@
         </div>
 
       </ul>
-
-      <!-- Send Ajax request to add categories -->
-      <button v-if="showAddCatgButton" @click="showCatgInput()">Add categories</button>
-      <button v-else @click="addCategory()" v-bind:disabled="catgName.length < 1">Submit</button>
-      <input v-if="showCatgInputForm" v-model="catgName" placeholder="edit me">
-      <p v-if="showCatgInputForm">New catg name is: {{ catgName }}</p>
-      <br>
     </div>
-
   </div>
 
 </template>
@@ -90,17 +81,12 @@
   // API request module
   import axios from 'axios'
   const keys = require('../../config/keys')
-  // import axiosService from '../axiosService.js'
 
   export default {
     data: () => ({
       clientId: keys.googleClientID,
       isHidden: false,
       isSignOutButtonHidden: false,
-      showAddCatgButton: true,
-      showCatgInputForm: false,
-      showAddTaskButton: true,
-      showTaskInputForm: false,
       userFirstName: '',
       userFullName: '',
       userEmail: '',
@@ -130,10 +116,10 @@
       interval: null,
       isPaused: false
     }),
-
     methods: {
       OnGoogleAuthSuccess(user) {
-        // console.log(user)
+        console.log(user)
+        // console.log(typeof(user))
         this.userFirstName = user.getGivenName()
         this.userFullName = user.getName()
         this.userEmail = user.getEmail()
@@ -201,11 +187,7 @@
         this.taskList = []
         axios({
           method: 'get',
-          url: 'http://localhost:5000/api/task',
-          params: {
-            userID: this.userEmail,
-            categName: categItem
-          }
+          url: 'http://localhost:5000/api/categories'
         }).then(res => {
           console.log('In showtask')
           console.log(res.data)
@@ -461,6 +443,7 @@
     vertical-align: middle;
     border-style: unset;
   }
+
   .google-signout-button {
     display: inline-block;
     background: white;
