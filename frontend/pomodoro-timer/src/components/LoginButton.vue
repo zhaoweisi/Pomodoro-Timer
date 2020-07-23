@@ -459,20 +459,24 @@
     background-color: transparent;
     vertical-align: middle;
     border-style: unset;
+    outline: none;
   }
 
   .google-signout-button {
     display: inline-block;
-    background: white;
-    color: #444;
-    width: 190px;
-    height: 50px;
-    border-radius: 5px;
+    background: #4285F4;
+    color: white;
+    width: 185px;
+    height: 38px;
+    border-radius: 0px;
     border: thin solid #888;
     box-shadow: 1px 1px 1px grey;
     white-space: nowrap;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
+    font-weight: bold;
+    outline: none;
+    vertical-align: middle;
   }
 
   img {
