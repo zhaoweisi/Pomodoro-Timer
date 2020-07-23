@@ -71,7 +71,15 @@
         </div>
 
       </ul>
+
+      <!-- Send Ajax request to add categories -->
+      <button v-if="showAddCatgButton" @click="showCatgInput()">Add categories</button>
+      <button v-else @click="addCategory()" v-bind:disabled="catgName.length < 1">Submit</button>
+      <input v-if="showCatgInputForm" v-model="catgName" placeholder="edit me">
+      <p v-if="showCatgInputForm">New catg name is: {{ catgName }}</p>
+      <br>
     </div>
+
   </div>
 
 </template>
@@ -87,6 +95,10 @@
       clientId: keys.googleClientID,
       isHidden: false,
       isSignOutButtonHidden: false,
+			showAddCatgButton: true,
+			showCatgInputForm: false,
+			showAddTaskButton: true,
+			showTaskInputForm: false,
       userFirstName: '',
       userFullName: '',
       userEmail: '',
@@ -116,6 +128,7 @@
       interval: null,
       isPaused: false
     }),
+
     methods: {
       OnGoogleAuthSuccess(user) {
         console.log(user)
@@ -187,7 +200,11 @@
         this.taskList = []
         axios({
           method: 'get',
-          url: 'http://localhost:5000/api/categories'
+					url: 'http://localhost:5000/api/task',
+          params: {
+            userID: this.userEmail,
+            categName: categItem
+          }
         }).then(res => {
           console.log('In showtask')
           console.log(res.data)
@@ -210,7 +227,7 @@
             categName: catgItem,
             taskName: this.taskName,
             taskSpan: parseInt(this.taskSpan * 60, 10),
-						status: "ongoing"
+						taskStatus: "ongoing"
           })
           // promise comsumption
           .then(res => {

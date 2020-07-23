@@ -98,7 +98,8 @@ router.post('/task', async(req,res) => {
 		userID: req.body.userID,
 		categName: req.body.categName,
 		taskName: req.body.taskName,
-		taskSpan: req.body.taskSpan
+		taskSpan: req.body.taskSpan,
+		status: req.body.taskStatus
 	});
 
   // Get tasks from db based on query criteria
