@@ -22,7 +22,7 @@ body, body * {
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
     font-size: 20px;
     color:#2c3e50;
-    background-color: #faf0af;
+    background-color: #faf0af  ;
  }
 
  p, ul {
@@ -68,9 +68,17 @@ a:focus {
 
 /* Layout */
 
-#loginButton {
-  padding: 2.5em 10%;
+
+ #loginButton {
+  padding: 22.5em 10%;
+} 
+
+div.loginfor {
+  padding-top: 2.5em;
+  color:#8bcdcd;
 }
+
+
 
 #footer {
   font-size: 10px;;
@@ -83,7 +91,7 @@ a:focus {
   margin-bottom: 3em;
 }
 
-#smile {
+#about-pic {
   float: right;
   padding-right:150px;
   padding-top: 50px;
@@ -98,7 +106,7 @@ a:focus {
     margin-top: 60px;
   }
 
-#login {
+#login-page {
     /*font-family: Avenir, Helvetica, Arial, sans-serif;*/
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -107,7 +115,7 @@ a:focus {
     margin-top: 60px;
   }
 
-#about {
+#about-content {
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -124,12 +132,33 @@ a:focus {
     color: #f00;
   }
 
-  .csstest {
-    font-family: 'Lato', sans-serif;
-    font-size: 38px;
-    font-weight: 300;
-    line-height: 58px;
-    margin: 0 0 58px;
+
+  /* ELEMENTS */
+  .google-signin-button {
+    display: inline-block;
+    background-color: transparent;
+    vertical-align: middle;
+    border-style: unset;
+    outline: none;
   }
-  
-  
+
+  img.google-signin-button {
+      border-radius: 0px;
+  }
+
+  .google-signout-button {
+    display: inline-block;
+    background: #4285F4;
+    color: white;
+    width: 185px;
+    height: 38px;
+    border-radius: 0px;
+    border: thin solid #888;
+    box-shadow: 1px 1px 1px grey;
+    white-space: nowrap;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    outline: none;
+    vertical-align: middle;
+  }

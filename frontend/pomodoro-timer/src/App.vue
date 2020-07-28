@@ -3,7 +3,6 @@
   <!-- Root needs only one component: one div -->
 
   <body>
- 
   <nav id="nav-main">
   <ul>
   <li><router-link to='/' >Home</router-link></li>
@@ -11,7 +10,8 @@
   <li><router-link to='/test' >CSSTest</router-link></li>
   </ul>
   </nav><!-- /#nav-main -->
-<router-view></router-view>
+
+  <router-view></router-view>
   <!-- <div id="app">
       <img id= "logo" alt="potatologo" src="./assets/logo.png"> 
       <h1>
@@ -34,7 +34,7 @@
     </div> -->
 
 <footer id="footer">
-<p class="copyright">&copy;2020 Potato Timer &bull; Site design by Team15 &bull; All Rights Reserved</p>
+<p class="copyright">&copy;2020 Potato Timer &bull; Site designed by Team15 &bull; All Rights Reserved</p>
 </footer>
 
 </body>

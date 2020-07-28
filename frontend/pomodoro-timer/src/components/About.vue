@@ -2,8 +2,8 @@
   <!-- https://stackoverflow.com/questions/45000510/vue-js-error-component-template-should-contain-exactly-one-root-element -->
   <!-- Root needs only one component: one div -->
 <body>
-<div id="about">
-<div id="smile"> 
+<div id="about-content">
+<div id="about-pic"> 
 <img alt="a smile potato" src="@/assets/about_Artwork.png" width=500> 
 </div>
 <h1>About Potato Timer</h1>
