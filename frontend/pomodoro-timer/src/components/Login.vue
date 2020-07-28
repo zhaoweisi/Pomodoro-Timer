@@ -3,17 +3,19 @@
   <!-- Root needs only one component: one div -->
 
   <div id="login">
+    <div id="loginButton">
+      <button v-google-signin-button="clientId" class="google-signin-button" v-if="!isHidden">
+            <img id= "login-button-img" alt="Google sign-in" src="../assets/icons/btn_google_signin_dark_normal_web.png" />
+      </button>
+      
+      <button v-google-signout-button="clientId" class="google-signout-button" v-if="isSignOutButtonHidden"> Sign out
+      </button>
+
       <img id= "logo" alt="potatologo" src="@/assets/home_Artwork.png" width=500> 
       <h1>
         Potato Timer
       </h1>
-      <div id="loginButton">
-       <button v-google-signin-button="clientId" class="google-signin-button" v-if="!isHidden">
-            <img id= "login-button-img" alt="Google sign-in" src="../assets/icons/btn_google_signin_dark_normal_web.png" />
-            </button>
-    <br>
-    <button v-google-signout-button="clientId" class="google-signout-button" v-if="isSignOutButtonHidden"> Sign out
-            </button>
+      
     <br>
     <br>
     <br>
