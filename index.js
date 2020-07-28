@@ -41,6 +41,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());		// body parse for http post requests
 
+const index = require('./routes/index');
+app.use('/', index);
 const api = require('./routes/api');
 app.use('/api', api);
 
