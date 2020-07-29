@@ -48,6 +48,9 @@
 
       <div v-if="timerStarted">
         <div>{{timeDisplay}}</div>
+        <div id="timerBackground">
+          <div id="timerBar"></div>
+        </div>
         <button @click="pauseTimer()"> Pause/Resume </button>
         <!-- <button @click="skip()"> Skip </button> -->
       </div>
@@ -98,7 +101,6 @@
   // API request module
   import axios from 'axios'
   const keys = require('../../config/keys')
-
   export default {
     data: () => ({
       clientId: keys.googleClientID,
@@ -355,6 +357,9 @@
       update() {
         this.timeRemaining = this.timeTotal - this.timePassed
         this.timeDisplay = this.timeToString(this.timeRemaining)
+        var elem = document.getElementById("timerBar");
+        var percentage = this.timePassed * 100 /this.timeTotal;
+        elem.style.width = percentage + "%";
         // console.log("taskRemTotal")
         // console.log(this.taskRemTotal)
 				if (this.isTask == "task") {
