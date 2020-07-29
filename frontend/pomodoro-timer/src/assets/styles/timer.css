@@ -102,4 +102,15 @@
     padding-left:60px;
     font-size:20px;
   }
-  
+
+  #timerBackground {
+    width: 100%;
+    background-color: #ddd;
+  }
+
+  #timerBar {
+    width: 50%;
+    height: 30px;
+    background-color: #4CAF50;
+  }
+

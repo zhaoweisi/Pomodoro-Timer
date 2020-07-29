@@ -41,6 +41,11 @@
             <li>Cat 3</li>
         </ul>
     </div>
+    <h1>Progress Bar</h1>
+    <div id="timerBackground">
+        <div id="timerBar" width="50%"></div>
+    </div>
+    <h1/>
 </body>
 </template>
 
