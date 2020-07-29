@@ -41,12 +41,18 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());		// body parse for http post requests
 
-const index = require('./routes/index');
-app.use('/', index);
+
 const api = require('./routes/api');
 app.use('/api', api);
 
 require('./routes/authRoutes')(app);
+
+if (process.env.NODE_ENV === 'production') {
+
+	app.use(express.static(__dirname + '/public/'));
+
+	app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'));
+}
 
 
 // listen to environmetn port when delploy or 5000 if in development
