@@ -159,7 +159,7 @@
       addUserID() {
         // promise production
         axios
-          .post('http://localhost:5000/api/user', { userID: this.userEmail })
+          .post('/api/user', { userID: this.userEmail })
           // promise comsumption
           .then(res => {
             console.log('In addUserID load categories and reward')
@@ -312,7 +312,7 @@
 							// Add visualization...
 							// Update reward in database
 							axios
-								.post('http://localhost:5000/api/reward', {
+								.post('/api/reward', {
 									userID: this.userEmail,
 								})
 								// promise comsumption
