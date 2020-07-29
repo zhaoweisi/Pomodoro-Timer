@@ -43,7 +43,7 @@
     </div>
     <h1>Progress Bar</h1>
     <div id="timerBackground">
-        <div id="timerBar" width="50%"></div>
+        <div id="timerBar-Testing"></div>
     </div>
     <h1/>
 </body>
