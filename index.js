@@ -47,12 +47,11 @@ app.use('/api', api);
 
 require('./routes/authRoutes')(app);
 
-if (process.env.NODE_ENV === 'production') {
 
-	app.use(express.static(__dirname + '/public/'));
+app.use(express.static(__dirname + '/public/'));
 
-	app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'));
-}
+app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'));
+
 
 
 // listen to environmetn port when delploy or 5000 if in development
