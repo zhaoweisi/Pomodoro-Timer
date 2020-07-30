@@ -132,6 +132,10 @@ a:focus {
     vertical-align: middle;
     border-style: unset;
     outline: none;
+
+    position:relative; 
+    left: 725px; 
+    bottom:580px;
   }
   
   #login-button-img {
@@ -153,4 +157,8 @@ a:focus {
     font-weight: bold;
     outline: none;
     vertical-align: middle;
+
+    position:relative; 
+    left: 725px; 
+    bottom:580px;
   }

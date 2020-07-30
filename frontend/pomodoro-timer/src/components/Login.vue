@@ -3,17 +3,19 @@
   <!-- Root needs only one component: one div -->
 
   <div id="login">
+    <div id="loginButton">
+      <button v-google-signin-button="clientId" class="google-signin-button" v-if="!isHidden">
+            <img id= "login-button-img" alt="Google sign-in" src="../assets/icons/btn_google_signin_dark_normal_web.png" />
+      </button>
+      
+      <button v-google-signout-button="clientId" class="google-signout-button" v-if="isSignOutButtonHidden"> Sign out
+      </button>
+
       <img id= "logo" alt="potatologo" src="@/assets/home_Artwork.png" width=500> 
       <h1>
         Potato Timer
       </h1>
-      <div id="loginButton">
-       <button v-google-signin-button="clientId" class="google-signin-button" v-if="!isHidden">
-            <img id= "login-button-img" alt="Google sign-in" src="../assets/icons/btn_google_signin_dark_normal_web.png" />
-            </button>
-    <br>
-    <button v-google-signout-button="clientId" class="google-signout-button" v-if="isSignOutButtonHidden"> Sign out
-            </button>
+      
     <br>
     <br>
     <br>
@@ -46,6 +48,9 @@
 
       <div v-if="timerStarted">
         <div>{{timeDisplay}}</div>
+        <div id="timerBackground">
+          <div id="timerBar"></div>
+        </div>
         <button @click="pauseTimer()"> Pause/Resume </button>
         <!-- <button @click="skip()"> Skip </button> -->
       </div>
@@ -96,7 +101,6 @@
   // API request module
   import axios from 'axios'
   const keys = require('../../config/keys')
-
   export default {
     data: () => ({
       clientId: keys.googleClientID,
@@ -353,6 +357,9 @@
       update() {
         this.timeRemaining = this.timeTotal - this.timePassed
         this.timeDisplay = this.timeToString(this.timeRemaining)
+        var elem = document.getElementById("timerBar");
+        var percentage = this.timePassed * 100 /this.timeTotal;
+        elem.style.width = percentage + "%";
         // console.log("taskRemTotal")
         // console.log(this.taskRemTotal)
 				if (this.isTask == "task") {
