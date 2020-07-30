@@ -256,7 +256,7 @@
           // Show current selected task remaining time total
           axios({
             method: 'get',
-            url: 'api/taskSpan',
+            url: '/api/taskSpan',
             params: {
               userID: this.userEmail,
               categName: catgItem,
@@ -365,7 +365,7 @@
         // Request to get current task's time data
         axios({
           method: 'get',
-          url: 'api/taskSpan',
+          url: '/api/taskSpan',
           params: {
             userID: this.userEmail,
             categName: this.selectedCatg,
