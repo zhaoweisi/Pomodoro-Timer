@@ -13,9 +13,11 @@
     "vue": "^2.6.11",
     "vue-google-signin-button-directive": "^1.0.3",
     "vue-router": "^3.3.4",
-    "@vue/cli-service": "~4.4.0"
+    "@vue/cli-service": "~4.4.0",
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-plugin-eslint": "~4.4.0"
   },
-  
+
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
     "@vue/cli-plugin-eslint": "~4.4.0",
