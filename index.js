@@ -45,7 +45,7 @@ app.use(express.json());		// body parse for http post requests
 const api = require('./routes/api');
 app.use('/api', api);
 
-
+require('./routes/authRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
 
@@ -54,7 +54,7 @@ if (process.env.NODE_ENV === 'production') {
 	app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'));
 }
 
-require('./routes/authRoutes')(app);
+
 
 
 // listen to environmetn port when delploy or 5000 if in development
