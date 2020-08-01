@@ -2,10 +2,10 @@
 /*
 #faf0af         /* light yellow */
 
-/*	FOR	DEVO ONLY */
-/* header, footer,	nav, main, section, div {			
+/*	FOR	DEVO ONLY 
+ header, footer,	nav, main, section, div, p, #logo, #login{			
 	border:	1px	solid red;	
-}	
+}	*/
 
 
 /* BROWSER RESETS */
@@ -25,6 +25,10 @@ body, body * {
     background-color: #faf0af;
  }
 
+ button {
+   font-family: inherit;
+ }
+
  p, ul {
   margin: 0 0 .75em 0;	
 }
@@ -41,7 +45,7 @@ nav li {
 }
 
 #nav-main {
-	background-color:#8bcdcd;	/* rust */
+	background-color:#8bcdcd;	
   padding: 1em 5%;	
   overflow: hidden;
 }
@@ -68,8 +72,8 @@ a:focus {
 
 /* Layout */
 
-#loginButton {
-  padding: 2.5em 10%;
+#login {
+  padding: 2.2em 10%;
 }
 
 #footer {
@@ -79,15 +83,16 @@ a:focus {
 }
 
 #logo {
-  size: 150%;
+  size: 180%;
   margin-bottom: 3em;
+
 }
 
 #smile {
   float: right;
   padding-right:150px;
   padding-top: 50px;
-}
+} 
 
 #app {
     /*font-family: Avenir, Helvetica, Arial, sans-serif;*/
@@ -98,7 +103,7 @@ a:focus {
     margin-top: 60px;
   }
 
-#login {
+#login-page {
     /*font-family: Avenir, Helvetica, Arial, sans-serif;*/
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -126,6 +131,7 @@ a:focus {
 
 
   /* Elements */
+
   .google-signin-button {
     display: inline-block;
     background-color: transparent;
@@ -161,4 +167,49 @@ a:focus {
     position:relative; 
     left: 725px; 
     bottom:580px;
+  }
+
+  div.welcome-infor{
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 16px;
+    color: #2c3e50;
+    font-weight: bold;
+  }
+
+  .setting-task div, p{
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 20px;
+    color: #2c3e50;
+    font-weight: bold;
+  }
+
+  button.loggintButton {
+    background-color:#8bcdcd;
+    font-size:12px;
+    padding:12px 28px;
+    border-radius: 8px;
+    border:2px solid #679b9b;
+
+  }
+
+  #categoryButton {
+    background-color:#8bcdcd;
+    font-size:20px;
+    padding:12px 28px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+
+  #categoryButton:hover {
+    background-color: #e3dfc8;
+  }
+
+  #taskButton {
+    background-color:#8bcdcd;
+    font-size:20px;
+    padding:12px 28px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #2c3e50;
   }

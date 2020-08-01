@@ -2,10 +2,11 @@
   <!-- https://stackoverflow.com/questions/45000510/vue-js-error-component-template-should-contain-exactly-one-root-element -->
   <!-- Root needs only one component: one div -->
 
-  <div id="login">
-    <div id="loginButton">
+<body>
+  <div id="login-page">
+    <div id="login">
       <button v-google-signin-button="clientId" class="google-signin-button" v-if="!isHidden">
-            <img id= "login-button-img" alt="Google sign-in" src="../assets/icons/btn_google_signin_dark_normal_web.png" />
+      <img id= "login-button-img" alt="Google sign-in" src="../assets/icons/btn_google_signin_dark_normal_web.png" />
       </button>
       
       <button v-google-signout-button="clientId" class="google-signout-button" v-if="isSignOutButtonHidden"> Sign out
@@ -15,10 +16,8 @@
       <h1>
         Potato Timer
       </h1>
-      
-    <br>
-    <br>
-    <br>
+    
+    <div class="welcome-infor">
     <div v-if="isHidden"> Welcome, {{this.userFirstName}}</div>
     <br>
     <img v-if="isHidden" v-bind:src="this.imgURL" />
@@ -27,16 +26,16 @@
     <div v-if="isHidden"> Your Name: {{this.userFullName}}</div>
     <div v-if="isHidden"> Your Email: {{this.userEmail}}</div>
 		<div v-if="isHidden"> Your Reward: {{this.userReward}}</div>
-
+    </div><!--  #welcome-infor -->
     <br><br>
 
     <!-- Timer -->
-    <div v-if="isHidden">
+    <div class="setting-task" v-if="isHidden">
 
-      <div v-if="!isTaskChosen"> Start a potato session by clicking a task name </div>
+      <div v-if="!isTaskChosen"> Start a potato session by clicking a task name &#128512; </div>
       <div v-else>
-        <p> To switch between tasks, just click task name </p>
-        <p style="font-weight: bold"> Selected task: {{selectedTask}}  <button @click="onTimesUp()" >Mark as completed</button> </p>
+        <p> To switch between tasks, just click task name  </p>
+        <p> Selected task: {{selectedTask}}  <button @click="onTimesUp()" >Mark as completed</button> </p>
         <p> Remaining time total: {{taskRemDisplay}} </p>
       </div>
       <div v-if="!timerStarted && isTaskChosen">
@@ -58,6 +57,7 @@
 
     <!-- Category and task list -->
     <br> <br>
+    
     <div v-if="isHidden">
       <h2> Your categories: </h2>
       <p> Click category name to add or show tasks</p>
@@ -71,26 +71,26 @@
             <li @click="selectTask(taskItem, catgItem)"> {{taskItem}} </li>
           </ul>
           <!-- Send Ajax request to add tasks -->
-          <button v-if="showAddTaskButton" @click="showTaskInput()">Add Task</button>
+          <button id="taskButton" v-if="showAddTaskButton" @click="showTaskInput()">Add Task</button>
           <input v-if="showTaskInputForm" v-model="taskName" placeholder="task name">
           <input v-if="showTaskInputForm" v-model="taskSpan" placeholder="task span">
           <p v-if="showTaskInputForm">New task name is: {{ taskName }}</p>
           <p v-if="showTaskInputForm">New task span is: {{ taskSpan }} minutes </p>
           <button v-if="!showAddTaskButton" @click="addTask(catgItem)" v-bind:disabled="taskName.length < 1 || taskSpan < 1">Submit</button>
         </div>
-
+  
       </ul>
 
       <!-- Send Ajax request to add categories -->
-      <button v-if="showAddCatgButton" @click="showCatgInput()">Add categories</button>
+      <button id="categoryButton" v-if="showAddCatgButton" @click="showCatgInput()">Add categories</button>
       <button v-else @click="addCategory()" v-bind:disabled="catgName.length < 1">Submit</button>
       <input v-if="showCatgInputForm" v-model="catgName" placeholder="edit me">
       <p v-if="showCatgInputForm">New catg name is: {{ catgName }}</p>
       <br>
     </div>
       </div><!-- #loginButton -->
-  </div>
-
+  </div><!-- #login-page -->
+</body>
 </template>
 
 <script>
