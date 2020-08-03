@@ -140,7 +140,7 @@ router.post('/taskSpan', async(req,res) => {
 			$inc: {taskSpan: (-1)*req.body.subtraction}
 		}
 	);
-	res.sendStatus(200)
+	res.send("in api taskspan");
 });
 
 
