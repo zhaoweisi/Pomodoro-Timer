@@ -11,7 +11,8 @@
     "start": "node index.js",
     "server": "nodemon index.js",
     "frontend": "npm run serve --prefix frontend/pomodoro-timer",
-    "dev": "concurrently \"npm run server\" \"npm run frontend\""
+    "dev": "concurrently \"npm run server\" \"npm run frontend\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend/pomodoro-timer"
   },
   "author": "yuan li",
   "license": "ISC",

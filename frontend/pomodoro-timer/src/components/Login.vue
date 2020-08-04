@@ -162,7 +162,7 @@
       addUserID() {
         // promise production
         axios
-          .post('http://localhost:5000/api/user', { userID: this.userEmail })
+          .post('/api/user', { userID: this.userEmail })
           // promise comsumption
           .then(res => {
             console.log('In addUserID load categories and reward')
@@ -189,7 +189,7 @@
       addCategory() {
         // promise production
         axios
-          .post('http://localhost:5000/api/category', { userID: this.userEmail, categName: this.catgName })
+          .post('/api/category', { userID: this.userEmail, categName: this.catgName })
           // promise comsumption
           .then(res => {
             console.log('In add Category')
@@ -210,7 +210,7 @@
         this.taskList = []
         axios({
           method: 'get',
-					url: 'http://localhost:5000/api/task',
+					url: '/api/task',
           params: {
             userID: this.userEmail,
             categName: categItem
@@ -232,7 +232,7 @@
       addTask(catgItem) {
         // promise production
         axios
-          .post('http://localhost:5000/api/task', {
+          .post('/api/task', {
             userID: this.userEmail,
             categName: catgItem,
             taskName: this.taskName,
@@ -259,7 +259,7 @@
           // Show current selected task remaining time total
           axios({
             method: 'get',
-            url: 'http://localhost:5000/api/taskSpan',
+            url: '/api/taskSpan',
             params: {
               userID: this.userEmail,
               categName: catgItem,
@@ -296,7 +296,7 @@
 				console.log('In time is up, show time passed.')
 				console.log(this.timePassed)
 				axios
-					.post('http://localhost:5000/api/taskSpan', {
+					.post('/api/taskSpan', {
 						userID: this.userEmail,
 						categName: this.selectedCatg,
 						taskName: this.selectedTask,
@@ -315,7 +315,7 @@
 							// Add visualization...
 							// Update reward in database
 							axios
-								.post('http://localhost:5000/api/reward', {
+								.post('/api/reward', {
 									userID: this.userEmail,
 								})
 								// promise comsumption
@@ -332,7 +332,7 @@
 					.then(() => {
 						// Change task status in db
 						axios
-							.post('http://localhost:5000/api/status', {
+							.post('/api/status', {
 								userID: this.userEmail,
 								categName: this.selectedCatg,
 								taskName: this.selectedTask,
@@ -371,7 +371,7 @@
         // Request to get current task's time data
         axios({
           method: 'get',
-          url: 'http://localhost:5000/api/taskSpan',
+          url: '/api/taskSpan',
           params: {
             userID: this.userEmail,
             categName: this.selectedCatg,
@@ -404,7 +404,7 @@
           console.log('In skip')
           console.log(this.timePassed)
           axios
-            .post('http://localhost:5000/api/taskSpan', {
+            .post('/api/taskSpan', {
               userID: this.userEmail,
               categName: this.selectedCatg,
               taskName: this.selectedTask,
