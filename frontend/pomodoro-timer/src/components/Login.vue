@@ -36,13 +36,13 @@
       <div v-if="!isTaskChosen"> Start a potato session by clicking a task name </div>
       <div v-else>
         <p> To switch between tasks, just click task name </p>
-        <p style="font-weight: bold"> Selected task: {{selectedTask}}  <button @click="onTimesUp()" >Mark as completed</button> </p>
+        <p style="font-weight: bold"> Selected task: {{selectedTask}}  <button class="timer-button" @click="onTimesUp()" >Mark as completed</button> </p>
         <p> Remaining time total: {{taskRemDisplay}} </p>
       </div>
       <div v-if="!timerStarted && isTaskChosen">
         Set {{isTask}} session span (mins)
-        <input v-model="timerInput" placeholder="edit me">
-        <button @click="startTimer()" v-bind:disabled="timerInput < 1">Start</button>
+        <input class="input" v-model="timerInput" placeholder="edit me">
+        <button class="timer-button" @click="startTimer()" v-bind:disabled="timerInput < 1">Start</button>
         <br>
       </div>
 
@@ -51,11 +51,11 @@
         <div id="timerBackground">
           <div id="timerBar"></div>
         </div>
-        <button @click="pauseTimer()"> Pause/Resume </button>
+        <button class="timer-button" @click="pauseTimer()"> Pause/Resume </button>
         <!-- <button @click="skip()"> Skip </button> -->
       </div>
       <div v-if="isTaskChosen">
-        <button @click="skip()"> Skip </button>
+        <button class="timer-button" @click="skip()"> Skip </button>
       </div>
     </div>
 
@@ -65,29 +65,29 @@
       <h2> Your categories: </h2>
       <p> Click category name to add or show tasks</p>
       <br>
-      <ul v-for="(catgItem, index) in categoryList" :key="catgItem">
+      <ul class="category-list" v-for="(catgItem, index) in categoryList" :key="catgItem">
         <li @click="showTask(catgItem, index)" style="font-weight: bold">{{catgItem}}</li>
 
         <!-- Show clicked category's task list -->
         <div v-if="index==clickedCatgIndex">
-          <ul v-for="taskItem in taskList" :key="taskItem">
+          <ul class="task-list" v-for="taskItem in taskList" :key="taskItem">
             <li @click="selectTask(taskItem, catgItem)"> {{taskItem}} </li>
           </ul>
           <!-- Send Ajax request to add tasks -->
-          <button v-if="showAddTaskButton" @click="showTaskInput()">Add Task</button>
-          <input v-if="showTaskInputForm" v-model="taskName" placeholder="task name">
-          <input v-if="showTaskInputForm" v-model="taskSpan" placeholder="task span">
+          <button class="timer-button" v-if="showAddTaskButton" @click="showTaskInput()">Add Task</button>
+          <input class="input" v-if="showTaskInputForm" v-model="taskName" placeholder="task name">
+          <input class="input" v-if="showTaskInputForm" v-model="taskSpan" placeholder="task span">
           <p v-if="showTaskInputForm">New task name is: {{ taskName }}</p>
           <p v-if="showTaskInputForm">New task span is: {{ taskSpan }} minutes </p>
-          <button v-if="!showAddTaskButton" @click="addTask(catgItem)" v-bind:disabled="taskName.length < 1 || taskSpan < 1">Submit</button>
+          <button class="timer-button" v-if="!showAddTaskButton" @click="addTask(catgItem)" v-bind:disabled="taskName.length < 1 || taskSpan < 1">Submit</button>
         </div>
 
       </ul>
 
       <!-- Send Ajax request to add categories -->
-      <button v-if="showAddCatgButton" @click="showCatgInput()">Add categories</button>
-      <button v-else @click="addCategory()" v-bind:disabled="catgName.length < 1">Submit</button>
-      <input v-if="showCatgInputForm" v-model="catgName" placeholder="edit me">
+      <button v-if="showAddCatgButton" @click="showCatgInput()" class="timer-button">Add categories</button>
+      <button v-else @click="addCategory()" v-bind:disabled="catgName.length < 1" class="timer-button">Submit</button>
+      <input class="input" v-if="showCatgInputForm" v-model="catgName" placeholder="edit me">
       <p v-if="showCatgInputForm">New catg name is: {{ catgName }}</p>
       <br>
     </div>
