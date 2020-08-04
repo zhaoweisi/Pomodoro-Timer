@@ -1,13 +1,12 @@
 <template>
-  <!-- https://stackoverflow.com/questions/45000510/vue-js-error-component-template-should-contain-exactly-one-root-element -->
-  <!-- Root needs only one component: one div -->
 
   <div id="login">
+    <!-- sign in button -->
     <div id="loginButton">
-      <button v-google-signin-button="clientId" class="google-signin-button" v-if="!isHidden">
+      <button v-google-signin-button="clientId" class="google-signin-button" v-if="!isSignInButtonHidden">
             <img id= "login-button-img" alt="Google sign-in" src="../assets/icons/btn_google_signin_dark_normal_web.png" />
       </button>
-      
+      <!-- sign out button -->
       <button v-google-signout-button="clientId" class="google-signout-button" v-if="isSignOutButtonHidden"> Sign out
       </button>
 
@@ -19,19 +18,19 @@
     <br>
     <br>
     <br>
-    <div v-if="isHidden"> Welcome, {{this.userFirstName}}</div>
+    <div v-if="isSignInButtonHidden"> Welcome, {{this.userFirstName}}</div>
     <br>
-    <img v-if="isHidden" v-bind:src="this.imgURL" />
+    <img v-if="isSignInButtonHidden" v-bind:src="this.imgURL" />
     <br>
     <br>
-    <div v-if="isHidden"> Your Name: {{this.userFullName}}</div>
-    <div v-if="isHidden"> Your Email: {{this.userEmail}}</div>
-		<div v-if="isHidden"> Your Reward: {{this.userReward}}</div>
+    <div v-if="isSignInButtonHidden"> Your Name: {{this.userFullName}}</div>
+    <div v-if="isSignInButtonHidden"> Your Email: {{this.userEmail}}</div>
+		<div v-if="isSignInButtonHidden"> Your Reward: {{this.userReward}}</div>
 
     <br><br>
 
     <!-- Timer -->
-    <div v-if="isHidden">
+    <div v-if="isSignInButtonHidden">
 
       <div v-if="!isTaskChosen"> Start a potato session by clicking a task name </div>
       <div v-else>
@@ -61,7 +60,7 @@
 
     <!-- Category and task list -->
     <br> <br>
-    <div v-if="isHidden">
+    <div v-if="isSignInButtonHidden">
       <h2> Your categories: </h2>
       <p> Click category name to add or show tasks</p>
       <br>
@@ -104,7 +103,7 @@
   export default {
     data: () => ({
       clientId: keys.googleClientID,
-      isHidden: false,
+      isSignInButtonHidden: false,
       isSignOutButtonHidden: false,
 			showAddCatgButton: true,
 			showCatgInputForm: false,
@@ -149,7 +148,7 @@
         this.userEmail = user.getEmail()
         this.imgURL = user.getImageUrl()
         console.log('You have signed in')
-        this.isHidden = true
+        this.isSignInButtonHidden = true
         this.isSignOutButtonHidden = true
         // Upon user login, add user to db and load categories
         this.addUserID()
@@ -225,7 +224,7 @@
 
       OnGoogleAuthSignOut() {
         console.log('You have signed out')
-        this.isHidden = false
+        this.isSignInButtonHidden = false
         this.isSignOutButtonHidden = false
       },
 
