@@ -1,13 +1,12 @@
 <template>
-  <!-- https://stackoverflow.com/questions/45000510/vue-js-error-component-template-should-contain-exactly-one-root-element -->
-  <!-- Root needs only one component: one div -->
 
   <div id="login">
+    <!-- sign in button -->
     <div id="loginButton">
-      <button v-google-signin-button="clientId" class="google-signin-button" v-if="!isHidden">
+      <button v-google-signin-button="clientId" class="google-signin-button" v-if="!isSignInButtonHidden">
             <img id= "login-button-img" alt="Google sign-in" src="../assets/icons/btn_google_signin_dark_normal_web.png" />
       </button>
-
+      <!-- sign out button -->
       <button v-google-signout-button="clientId" class="google-signout-button" v-if="isSignOutButtonHidden"> Sign out
       </button>
 
@@ -19,72 +18,75 @@
     <br>
     <br>
     <br>
-    <div v-if="isHidden"> Welcome, {{this.userFirstName}}</div>
+    <div v-if="isSignInButtonHidden"> Welcome, {{this.userFirstName}}</div>
     <br>
-    <img v-if="isHidden" v-bind:src="this.imgURL" />
+    <img v-if="isSignInButtonHidden" v-bind:src="this.imgURL" />
     <br>
     <br>
-    <div v-if="isHidden"> Your Name: {{this.userFullName}}</div>
-    <div v-if="isHidden"> Your Email: {{this.userEmail}}</div>
-		<div v-if="isHidden"> Your Reward: {{this.userReward}}</div>
+    <div v-if="isSignInButtonHidden"> Your Name: {{this.userFullName}}</div>
+    <div v-if="isSignInButtonHidden"> Your Email: {{this.userEmail}}</div>
+		<div v-if="isSignInButtonHidden"> Your Reward: {{this.userReward}}</div>
 
     <br><br>
 
     <!-- Timer -->
-    <div v-if="isHidden">
+    <div v-if="isSignInButtonHidden">
 
       <div v-if="!isTaskChosen"> Start a potato session by clicking a task name </div>
       <div v-else>
         <p> To switch between tasks, just click task name </p>
-        <p style="font-weight: bold"> Selected task: {{selectedTask}}  <button @click="onTimesUp()" >Mark as completed</button> </p>
+        <p style="font-weight: bold"> Selected task: {{selectedTask}}  <button class="timer-button" @click="onTimesUp()" >Mark as completed</button> </p>
         <p> Remaining time total: {{taskRemDisplay}} </p>
       </div>
       <div v-if="!timerStarted && isTaskChosen">
         Set {{isTask}} session span (mins)
-        <input v-model="timerInput" placeholder="edit me">
-        <button @click="startTimer()" v-bind:disabled="timerInput < 1">Start</button>
+        <input class="input" v-model="timerInput" placeholder="edit me">
+        <button class="timer-button" @click="startTimer()" v-bind:disabled="timerInput < 1">Start</button>
         <br>
       </div>
 
       <div v-if="timerStarted">
         <div>{{timeDisplay}}</div>
-        <button @click="pauseTimer()"> Pause/Resume </button>
+        <div id="timerBackground">
+          <div id="timerBar"></div>
+        </div>
+        <button class="timer-button" @click="pauseTimer()"> Pause/Resume </button>
         <!-- <button @click="skip()"> Skip </button> -->
       </div>
       <div v-if="isTaskChosen">
-        <button @click="skip()"> Skip </button>
+        <button class="timer-button" @click="skip()"> Skip </button>
       </div>
     </div>
 
     <!-- Category and task list -->
     <br> <br>
-    <div v-if="isHidden">
+    <div v-if="isSignInButtonHidden">
       <h2> Your categories: </h2>
       <p> Click category name to add or show tasks</p>
       <br>
-      <ul v-for="(catgItem, index) in categoryList" :key="catgItem">
+      <ul class="category-list" v-for="(catgItem, index) in categoryList" :key="catgItem">
         <li @click="showTask(catgItem, index)" style="font-weight: bold">{{catgItem}}</li>
 
         <!-- Show clicked category's task list -->
         <div v-if="index==clickedCatgIndex">
-          <ul v-for="taskItem in taskList" :key="taskItem">
+          <ul class="task-list" v-for="taskItem in taskList" :key="taskItem">
             <li @click="selectTask(taskItem, catgItem)"> {{taskItem}} </li>
           </ul>
           <!-- Send Ajax request to add tasks -->
-          <button v-if="showAddTaskButton" @click="showTaskInput()">Add Task</button>
-          <input v-if="showTaskInputForm" v-model="taskName" placeholder="task name">
-          <input v-if="showTaskInputForm" v-model="taskSpan" placeholder="task span">
+          <button class="timer-button" v-if="showAddTaskButton" @click="showTaskInput()">Add Task</button>
+          <input class="input" v-if="showTaskInputForm" v-model="taskName" placeholder="task name">
+          <input class="input" v-if="showTaskInputForm" v-model="taskSpan" placeholder="task span">
           <p v-if="showTaskInputForm">New task name is: {{ taskName }}</p>
           <p v-if="showTaskInputForm">New task span is: {{ taskSpan }} minutes </p>
-          <button v-if="!showAddTaskButton" @click="addTask(catgItem)" v-bind:disabled="taskName.length < 1 || taskSpan < 1">Submit</button>
+          <button class="timer-button" v-if="!showAddTaskButton" @click="addTask(catgItem)" v-bind:disabled="taskName.length < 1 || taskSpan < 1">Submit</button>
         </div>
 
       </ul>
 
       <!-- Send Ajax request to add categories -->
-      <button v-if="showAddCatgButton" @click="showCatgInput()">Add categories</button>
-      <button v-else @click="addCategory()" v-bind:disabled="catgName.length < 1">Submit</button>
-      <input v-if="showCatgInputForm" v-model="catgName" placeholder="edit me">
+      <button v-if="showAddCatgButton" @click="showCatgInput()" class="timer-button">Add categories</button>
+      <button v-else @click="addCategory()" v-bind:disabled="catgName.length < 1" class="timer-button">Submit</button>
+      <input class="input" v-if="showCatgInputForm" v-model="catgName" placeholder="edit me">
       <p v-if="showCatgInputForm">New catg name is: {{ catgName }}</p>
       <br>
     </div>
@@ -98,11 +100,10 @@
   // API request module
   import axios from 'axios'
   const keys = require('../../config/keys')
-
   export default {
     data: () => ({
       clientId: keys.googleClientID,
-      isHidden: false,
+      isSignInButtonHidden: false,
       isSignOutButtonHidden: false,
 			showAddCatgButton: true,
 			showCatgInputForm: false,
@@ -148,7 +149,7 @@
         this.userEmail = user.getEmail()
         this.imgURL = user.getImageUrl()
         console.log('You have signed in')
-        this.isHidden = true
+        this.isSignInButtonHidden = true
         this.isSignOutButtonHidden = true
         // Upon user login, add user to db and load categories
         this.addUserID()
@@ -162,7 +163,7 @@
       addUserID() {
         // promise production
         axios
-          .post('http://localhost:5000/api/user', { userID: this.userEmail })
+          .post('/api/user', { userID: this.userEmail })
           // promise comsumption
           .then(res => {
             console.log('In addUserID load categories and reward')
@@ -189,7 +190,7 @@
       addCategory() {
         // promise production
         axios
-          .post('http://localhost:5000/api/category', { userID: this.userEmail, categName: this.catgName })
+          .post('/api/category', { userID: this.userEmail, categName: this.catgName })
           // promise comsumption
           .then(res => {
             console.log('In add Category')
@@ -210,7 +211,7 @@
         this.taskList = []
         axios({
           method: 'get',
-					url: 'http://localhost:5000/api/task',
+					url: '/api/task',
           params: {
             userID: this.userEmail,
             categName: categItem
@@ -224,7 +225,7 @@
 
       OnGoogleAuthSignOut() {
         console.log('You have signed out')
-        this.isHidden = false
+        this.isSignInButtonHidden = false
         this.isSignOutButtonHidden = false
       },
 
@@ -232,7 +233,7 @@
       addTask(catgItem) {
         // promise production
         axios
-          .post('http://localhost:5000/api/task', {
+          .post('/api/task', {
             userID: this.userEmail,
             categName: catgItem,
             taskName: this.taskName,
@@ -259,7 +260,7 @@
           // Show current selected task remaining time total
           axios({
             method: 'get',
-            url: 'http://localhost:5000/api/taskSpan',
+            url: '/api/taskSpan',
             params: {
               userID: this.userEmail,
               categName: catgItem,
@@ -297,7 +298,7 @@
 				console.log(this.timePassed)
 				if (this.isTask == 'task') {
 				axios
-					.post('http://localhost:5000/api/taskSpan', {
+					.post('/api/taskSpan', {
 						userID: this.userEmail,
 						categName: this.selectedCatg,
 						taskName: this.selectedTask,
@@ -318,7 +319,7 @@
 							// Add visualization...
 							// Update reward in database
 							axios
-								.post('http://localhost:5000/api/reward', {
+								.post('/api/reward', {
 									userID: this.userEmail,
 								})
 								// promise comsumption
@@ -338,7 +339,7 @@
 
 						// Change task status in db
 						axios
-							.post('http://localhost:5000/api/status', {
+							.post('/api/status', {
 								userID: this.userEmail,
 								categName: this.selectedCatg,
 								taskName: this.selectedTask,
@@ -365,6 +366,9 @@
       update() {
         this.timeRemaining = this.timeTotal - this.timePassed
         this.timeDisplay = this.timeToString(this.timeRemaining)
+        var elem = document.getElementById("timerBar");
+        var percentage = this.timePassed * 100 /this.timeTotal;
+        elem.style.width = percentage + "%";
         // console.log("taskRemTotal")
         // console.log(this.taskRemTotal)
 				if (this.isTask == "task") {
@@ -377,7 +381,7 @@
         // Request to get current task's time data
         axios({
           method: 'get',
-          url: 'http://localhost:5000/api/taskSpan',
+          url: '/api/taskSpan',
           params: {
             userID: this.userEmail,
             categName: this.selectedCatg,
@@ -411,7 +415,7 @@
           console.log('In skip')
           console.log(this.timePassed)
           axios
-            .post('http://localhost:5000/api/taskSpan', {
+            .post('/api/taskSpan', {
               userID: this.userEmail,
               categName: this.selectedCatg,
               taskName: this.selectedTask,

@@ -53,8 +53,8 @@
     background-color: #e2e4e5; /* Gray */
     border: none;
     color: white;
-    padding: 16px 32px;
-    height:50px;
+    padding: 11px 22px;
+    height:44px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -94,12 +94,28 @@
   }
 
   .category-list {
-    padding-left:40px;
+    /* padding-left:40px; */
     font-size:30px;
   }
 
   .task-list {
-    padding-left:60px;
+    /* padding-left:60px; */
     font-size:20px;
   }
-  
+
+  #timerBackground {
+    width: 100%;
+    background-color: #ddd;
+  }
+
+  #timerBar {
+    width: 0%;
+    height: 30px;
+    background-color: #4CAF50;
+  }
+
+  #timerBar-Testing {
+    width:50%;
+    height: 30px;
+    background-color: #4CAF50;
+  }
