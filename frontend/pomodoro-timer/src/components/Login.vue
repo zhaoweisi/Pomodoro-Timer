@@ -10,11 +10,11 @@
       <button v-google-signout-button="clientId" class="google-signout-button" v-if="isSignOutButtonHidden"> Sign out
       </button>
 
-      <img id= "logo" alt="potatologo" src="@/assets/home_Artwork.png" width=500> 
+      <img id= "logo" alt="potatologo" src="@/assets/home_Artwork.png" width=500>
       <h1>
         Potato Timer
       </h1>
-      
+
     <br>
     <br>
     <br>
@@ -35,7 +35,7 @@
       <div v-if="!isTaskChosen"> Start a potato session by clicking a task name </div>
       <div v-else>
         <p> To switch between tasks, just click task name </p>
-        <p style="font-weight: bold"> Selected task: {{selectedTask}}  <button class="timer-button" @click="onTimesUp()" >Mark as completed</button> </p>
+        <p style="font-weight: bold"> Selected task: {{selectedTask}}  <button class="timer-button" @click="markFinished()" >Mark as completed</button> </p>
         <p> Remaining time total: {{taskRemDisplay}} </p>
       </div>
       <div v-if="!timerStarted && isTaskChosen">
@@ -136,7 +136,8 @@
       timePassed: 0, // +1 every update, sec
       timeRemaining: 0, // -1 every update, sec, init to timeTotal
       interval: null,
-      isPaused: false
+      isPaused: false,
+			isLastSession: false
     }),
 
     methods: {
@@ -289,12 +290,20 @@
         }
       },
 
+			//
+			markFinished() {
+				this.isTask = 'task'
+				this.isLastSession = true
+				this.onTimesUp()
+			},
+
       //
       onTimesUp() {
         clearInterval(this.interval)
         this.timerStarted = false
 				console.log('In time is up, show time passed.')
 				console.log(this.timePassed)
+				if (this.isTask == 'task') {
 				axios
 					.post('/api/taskSpan', {
 						userID: this.userEmail,
@@ -309,6 +318,8 @@
 					})
 					// Ask user if task is finished or not
 					.then(() => {
+						if (this.isLastSession) {
+
 						// Finished, increment reward
 						if (confirm("Mark task as finished?") == true) {
 							this.userReward = this.userReward+1;
@@ -327,9 +338,12 @@
 						else {
 							alert("Tips: Set more realistic task span next time!")
 						}
+					}
 					})
 					// Hide timer and go back to choose task
 					.then(() => {
+						if (this.isLastSession) {
+
 						// Change task status in db
 						axios
 							.post('/api/status', {
@@ -340,7 +354,10 @@
 							})
 						// Hide timer
 						this.isTaskChosen = false
+						this.isLastSession = false
+					}
 					})
+				}
       },
 
       //
@@ -383,6 +400,7 @@
           this.timeTotal = this.timerInput * 60
 					if (this.isTask == "task" && this.taskRemTotal <= this.timeTotal) {
 						this.timeTotal = this.taskRemTotal
+						this.isLastSession = true
 					}
           this.timerStarted = true
           this.reset()
@@ -401,6 +419,9 @@
       // Switch between task and rest
       skip() {
         if (this.timerStarted && this.isTask == "task") {
+					if (this.isLastSession){
+						this.isLastSession = false
+					}
           console.log('In skip')
           console.log(this.timePassed)
           axios
@@ -461,5 +482,3 @@
   } // export bracket
 
 </script>
-
-

@@ -140,7 +140,10 @@ router.post('/taskSpan', async(req,res) => {
 			$inc: {taskSpan: (-1)*req.body.subtraction}
 		}
 	);
-	res.send("in api taskspan");
+	// let current_task = await task.findOne({userID: req.body.userID, categName: req.body.categName, taskName: req.body.taskName});
+	// console.log("in post taskSpan");
+	// console.log(current_task);
+	res.sendStatus(200)
 });
 
 
