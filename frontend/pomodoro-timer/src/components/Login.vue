@@ -7,15 +7,15 @@
       <button v-google-signin-button="clientId" class="google-signin-button" v-if="!isHidden">
             <img id= "login-button-img" alt="Google sign-in" src="../assets/icons/btn_google_signin_dark_normal_web.png" />
       </button>
-      
+
       <button v-google-signout-button="clientId" class="google-signout-button" v-if="isSignOutButtonHidden"> Sign out
       </button>
 
-      <img id= "logo" alt="potatologo" src="@/assets/home_Artwork.png" width=500> 
+      <img id= "logo" alt="potatologo" src="@/assets/home_Artwork.png" width=500>
       <h1>
         Potato Timer
       </h1>
-      
+
     <br>
     <br>
     <br>
@@ -135,7 +135,8 @@
       timePassed: 0, // +1 every update, sec
       timeRemaining: 0, // -1 every update, sec, init to timeTotal
       interval: null,
-      isPaused: false
+      isPaused: false,
+			isLastSession: false
     }),
 
     methods: {
@@ -294,6 +295,7 @@
         this.timerStarted = false
 				console.log('In time is up, show time passed.')
 				console.log(this.timePassed)
+				if (this.isTask == 'task') {
 				axios
 					.post('http://localhost:5000/api/taskSpan', {
 						userID: this.userEmail,
@@ -308,6 +310,8 @@
 					})
 					// Ask user if task is finished or not
 					.then(() => {
+						if (this.isLastSession) {
+
 						// Finished, increment reward
 						if (confirm("Mark task as finished?") == true) {
 							this.userReward = this.userReward+1;
@@ -326,9 +330,12 @@
 						else {
 							alert("Tips: Set more realistic task span next time!")
 						}
+					}
 					})
 					// Hide timer and go back to choose task
 					.then(() => {
+						if (this.isLastSession) {
+
 						// Change task status in db
 						axios
 							.post('http://localhost:5000/api/status', {
@@ -339,7 +346,10 @@
 							})
 						// Hide timer
 						this.isTaskChosen = false
+						this.isLastSession = false
+					}
 					})
+				}
       },
 
       //
@@ -379,6 +389,7 @@
           this.timeTotal = this.timerInput * 60
 					if (this.isTask == "task" && this.taskRemTotal <= this.timeTotal) {
 						this.timeTotal = this.taskRemTotal
+						this.isLastSession = true
 					}
           this.timerStarted = true
           this.reset()
@@ -457,5 +468,3 @@
   } // export bracket
 
 </script>
-
-
