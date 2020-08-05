@@ -35,7 +35,7 @@
       <div v-if="!isTaskChosen"> Start a potato session by clicking a task name </div>
       <div v-else>
         <p> To switch between tasks, just click task name </p>
-        <p style="font-weight: bold"> Selected task: {{selectedTask}}  <button class="timer-button" @click="onTimesUp()" >Mark as completed</button> </p>
+        <p style="font-weight: bold"> Selected task: {{selectedTask}}  <button class="timer-button" @click="markFinished()" >Mark as completed</button> </p>
         <p> Remaining time total: {{taskRemDisplay}} </p>
       </div>
       <div v-if="!timerStarted && isTaskChosen">
@@ -290,6 +290,13 @@
         }
       },
 
+			//
+			markFinished() {
+				this.isTask = 'task'
+				this.isLastSession = true
+				this.onTimesUp()
+			},
+
       //
       onTimesUp() {
         clearInterval(this.interval)
@@ -412,6 +419,9 @@
       // Switch between task and rest
       skip() {
         if (this.timerStarted && this.isTask == "task") {
+					if (this.isLastSession){
+						this.isLastSession = false
+					}
           console.log('In skip')
           console.log(this.timePassed)
           axios
