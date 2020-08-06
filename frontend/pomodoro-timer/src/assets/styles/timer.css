@@ -5,23 +5,23 @@
     width: 500px;
     height: 300px;
     margin: auto;
-  }
-  
-  .timer-svg {
+}
+
+.timer-svg {
     transform: scaleX(-1);
-  }
-  
-  .timer-circle {
+}
+
+.timer-circle {
     fill: none;
     stroke: none;
-  }
-  
-  .timer-path-elapsed {
+}
+
+.timer-path-elapsed {
     stroke-width: 7px;
     stroke: grey;
-  }
-  
-  .timer-path-remaining {
+}
+
+.timer-path-remaining {
     stroke-width: 7px;
     stroke-linecap: round;
     transform: rotate(90deg);
@@ -30,9 +30,9 @@
     fill-rule: nonzero;
     stroke: currentColor;
     color: red;
-  }
-  
-  .timer-countdown {
+}
+
+.timer-countdown {
     position: absolute;
     width: 300px;
     height: 300px;
@@ -40,21 +40,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-      font-size: 48px;
-  }
+    font-size: 48px;
+}
 
-  .timer-button-group {
+.timer-button-group {
     margin: auto;
     width: 800px;
-  }
-  
-  
-  .timer-button {
-    background-color: #e2e4e5; /* Gray */
+}
+
+.timer-button {
+    background-color: #e2e4e5;
+    /* Gray */
     border: none;
     color: white;
     padding: 11px 22px;
-    height:44px;
+    height: 44px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -62,60 +62,67 @@
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
-    color: black; 
+    color: black;
     border: 2px solid black;
     border-radius: 10px;
-  }
-  
-  .timer-button:hover {
+}
+
+.timer-button:hover {
     background-color: #40b689;
     color: white;
-  }
-  
-  /* END TIMER */
+}
 
-  h1 {
-    padding-top:80px;
-  }
+/* END TIMER */
 
-  /* input box */
+h1 {
+    padding-top: 80px;
+}
 
-  .input {
+/* input box */
+
+.input {
     /* width: 100%; */
     padding: 12px 20px;
     margin: 8px;
-  }
-  
-  .input:focus {
-   outline: none;
-    border:1px solid rgb(40, 169, 255);
+}
+
+.input:focus {
+    outline: none;
+    border: 1px solid rgb(40, 169, 255);
     box-shadow: 0 0 0 4px rgb(174, 219, 255);
-    
-  }
+}
 
-  .category-list {
+.category-list {
     /* padding-left:40px; */
-    font-size:30px;
-  }
+    font-size: 30px;
+}
 
-  .task-list {
+.task-list {
     /* padding-left:60px; */
-    font-size:20px;
-  }
+    font-size: 20px;
+}
 
-  #timerBackground {
+/* the background of the timer progressbar */
+
+#timer-progressbar-background {
     width: 100%;
     background-color: #ddd;
-  }
+}
 
-  #timerBar {
+/* the foreground of the timer progressbar */
+
+#timer-progressbar {
     width: 0%;
     height: 30px;
     background-color: #4CAF50;
-  }
+}
 
-  #timerBar-Testing {
-    width:50%;
+/* This is for css testing only, because the css testing page doesn't have 
+  js support so it can't simulate the timer tick function. This style sets 
+  the width to 50% so we can easily see the timer colors */
+
+#timer-progressbar-testing {
+    width: 50%;
     height: 30px;
     background-color: #4CAF50;
-  }
+}

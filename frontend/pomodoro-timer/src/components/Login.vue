@@ -47,8 +47,8 @@
 
       <div v-if="timerStarted">
         <div>{{timeDisplay}}</div>
-        <div id="timerBackground">
-          <div id="timerBar"></div>
+        <div id="timer-progressbar-background">
+          <div id="timer-progressbar"></div>
         </div>
         <button class="timer-button" @click="pauseTimer()"> Pause/Resume </button>
         <!-- <button @click="skip()"> Skip </button> -->
@@ -373,7 +373,7 @@
       update() {
         this.timeRemaining = this.timeTotal - this.timePassed
         this.timeDisplay = this.timeToString(this.timeRemaining)
-        var elem = document.getElementById("timerBar");
+        var elem = document.getElementById("timer-progressbar");
         var percentage = this.timePassed * 100 /this.timeTotal;
         elem.style.width = percentage + "%";
         // console.log("taskRemTotal")
