@@ -105,7 +105,8 @@ h1 {
 /* the background of the timer progressbar */
 
 #timer-progressbar-background {
-    width: 100%;
+    width: 80%;
+    margin: auto;
     background-color: #ddd;
 }
 
@@ -114,7 +115,7 @@ h1 {
 #timer-progressbar {
     width: 0%;
     height: 30px;
-    background-color: #4CAF50;
+    background-image: linear-gradient(to right, rgb(0, 255, 0) , red)
 }
 
 /* This is for css testing only, because the css testing page doesn't have 
@@ -124,5 +125,5 @@ h1 {
 #timer-progressbar-testing {
     width: 50%;
     height: 30px;
-    background-color: #4CAF50;
+    background-image: linear-gradient(to right, rgb(0, 255, 0) , red)
 }
