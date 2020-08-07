@@ -42,10 +42,10 @@
         </ul>
     </div>
     <h1>Progress Bar</h1>
-    <div id="timerBackground">
-        <div id="timerBar-Testing"></div>
+    <div id="timer-progressbar-background">
+        <div id="timer-progressbar-testing"></div>
     </div>
-    <h1/>
+    <h1 />
 </body>
 </template>
 
