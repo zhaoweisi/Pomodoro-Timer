@@ -48,9 +48,10 @@
     width: 800px;
 }
 
-.timer-button {
+/*
+ .timer-button {
     background-color: #e2e4e5;
-    /* Gray */
+     Gray 
     border: none;
     color: white;
     padding: 11px 22px;
@@ -65,12 +66,9 @@
     color: black;
     border: 2px solid black;
     border-radius: 10px;
-}
+}  */
 
-.timer-button:hover {
-    background-color: #40b689;
-    color: white;
-}
+
 
 /* END TIMER */
 

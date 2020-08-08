@@ -1,38 +1,38 @@
 <template>
-
   <div id="login">
+     <div class="logopic">
+      <img alt="potatologo" src="@/assets/home_Artwork.png" class="logo" width=500>
+      <h1>
+        Potato Timer
+      </h1>
+    </div>
+  <div class="signinout">
     <!-- sign in button -->
-    <div id="loginButton">
       <button v-google-signin-button="clientId" class="google-signin-button" v-if="!isSignInButtonHidden">
-            <img id= "login-button-img" alt="Google sign-in" src="../assets/icons/btn_google_signin_dark_normal_web.png" />
+            <img id= "login-button-img" alt="Google sign-in" src="../assets/icons/btn_google_signin_dark_normal_web.png" width:/>
       </button>
       <!-- sign out button -->
       <button v-google-signout-button="clientId" class="google-signout-button" v-if="isSignOutButtonHidden"> Sign out
       </button>
+    </div>
+    <br>
 
-      <img id= "logo" alt="potatologo" src="@/assets/home_Artwork.png" width=500>
-      <h1>
-        Potato Timer
-      </h1>
 
-    <br>
-    <br>
-    <br>
-    <div v-if="isSignInButtonHidden"> Welcome, {{this.userFirstName}}</div>
+    <div class="welcomeinfor">
+    <div v-if="isSignInButtonHidden"> Welcome!   {{this.userFirstName}} &#128512;</div>
     <br>
     <img v-if="isSignInButtonHidden" v-bind:src="this.imgURL" />
     <br>
     <br>
-    <div v-if="isSignInButtonHidden"> Your Name: {{this.userFullName}}</div>
-    <div v-if="isSignInButtonHidden"> Your Email: {{this.userEmail}}</div>
-		<div v-if="isSignInButtonHidden"> Your Reward: {{this.userReward}}</div>
-
-    <br><br>
+    <div v-if="isSignInButtonHidden"> Your Name:   {{this.userFullName}}</div>
+    <div v-if="isSignInButtonHidden"> Your Email:   {{this.userEmail}}</div><br>
+		<div v-if="isSignInButtonHidden"> Your Reward:   {{this.userReward}}</div>
+    </div><!-- welcomeinfor -->
+    <br>
 
     <!-- Timer -->
-    <div v-if="isSignInButtonHidden">
-
-      <div v-if="!isTaskChosen"> Start a potato session by clicking a task name </div>
+    <div v-if="isSignInButtonHidden" class="setTask">
+      <div v-if="!isTaskChosen"><p>  Start a potato session by clicking a task name </p></div>
       <div v-else>
         <p> To switch between tasks, just click task name </p>
         <p style="font-weight: bold"> Selected task: {{selectedTask}}  <button class="timer-button" @click="markFinished()" >Mark as completed</button> </p>
@@ -59,8 +59,8 @@
     </div>
 
     <!-- Category and task list -->
-    <br> <br>
-    <div v-if="isSignInButtonHidden">
+    <br> 
+    <div v-if="isSignInButtonHidden" class="setCatg">
       <h2> Your categories: </h2>
       <p> Click category name to add or show tasks</p>
       <br>
@@ -90,7 +90,7 @@
       <p v-if="showCatgInputForm">New catg name is: {{ catgName }}</p>
       <br>
     </div>
-      </div><!-- #loginButton -->
+    
   </div>
 
 </template>
