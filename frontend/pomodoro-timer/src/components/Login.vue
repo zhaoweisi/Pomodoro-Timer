@@ -36,7 +36,7 @@
       <div v-else>
         <p> To switch between tasks, just click task name </p>
         <p style="font-weight: bold"> Selected task: {{selectedTask}}  <button class="timer-button" @click="markFinished()" >Mark as completed</button> </p>
-        <p> Remaining time total: {{taskRemDisplay}} </p>
+        <p style="font-weight: bold"> <big>Remaining task time: {{taskRemDisplay}} </big></p>
       </div>
       <div v-if="!timerStarted && isTaskChosen">
         Set {{isTask}} session span (mins)
@@ -46,7 +46,7 @@
       </div>
 
       <div v-if="timerStarted">
-        <div>{{timeDisplay}}</div>
+        <div><p style="font-weight: bold"><big>Remaining session time: {{timeDisplay}}</big></p></div>
         <div id="timer-progressbar-background">
           <div id="timer-progressbar"></div>
         </div>
