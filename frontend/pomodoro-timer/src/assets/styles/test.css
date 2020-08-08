@@ -5,7 +5,7 @@
 /*	FOR	DEVO ONLY */
 /* header, footer,	nav, main, section, div {			
 	border:	1px	solid red;	
-}	
+}	*/
 
 
 /* BROWSER RESETS */
@@ -19,13 +19,14 @@ body, body * {
 /* GLOBAL STYLES */
 
  body {
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-family: "Chilanka";
     font-size: 20px;
     color:#2c3e50;
     background-color: #faf0af;
+    height: auto;
  }
 
- p, ul {
+ p, ul{
   margin: 0 0 .75em 0;	
 }
 
@@ -68,9 +69,6 @@ a:focus {
 
 /* Layout */
 
-#loginButton {
-  padding: 2.5em 10%;
-}
 
 #footer {
   font-size: 10px;;
@@ -78,10 +76,15 @@ a:focus {
   background-color:  #8bcdcd;
 }
 
-#logo {
-  size: 150%;
-  margin-bottom: 3em;
+/*
+.logo {
+  size: 130%;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  width:50%
 }
+*/
 
 #smile {
   float: right;
@@ -89,14 +92,6 @@ a:focus {
   padding-top: 50px;
 }
 
-#app {
-    /*font-family: Avenir, Helvetica, Arial, sans-serif;*/
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
 
 #login {
     /*font-family: Avenir, Helvetica, Arial, sans-serif;*/
@@ -104,7 +99,7 @@ a:focus {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
+    margin-top: 10px;
   }
 
 #about {
@@ -113,17 +108,46 @@ a:focus {
     -moz-osx-font-smoothing: grayscale;
     text-align: left;
     color: #2c3e50;
-    margin-top: 60px;
     margin-left: 50px;
     margin-right: 50px;
-    margin-bottom: 132px;
+    margin-bottom: 50px;
     line-height: 1.6; 
+  }
+
+  .welcomeinfor {
+    font-family: "Chilanka";
+    font-weight: bold;
+    font-size: 22px;
   }
 
   .router-link-active {
     color: #f00;
   }
+ 
+  .setCatg {
+    background-color: #f1c5c5;
+    width: 600px;
+    border-radius: 10px;
+    left:28%;
+    position: relative;
+  }
 
+  .setCatg ul li{
+   /* background-color: #8bcdcd; */
+    width: 600px;
+    margin: 0px;
+    border-radius: 10px;
+    left:28%;
+    list-style-position: inside;
+  }
+
+  .setTask {
+    /* background-color: #f1c5c5; */
+    width: 600px;
+    border-radius: 10px;
+    left:28%;
+    position: relative;
+  }
 
   /* Elements */
   .google-signin-button {
@@ -133,9 +157,9 @@ a:focus {
     border-style: unset;
     outline: none;
 
-    position:relative; 
-    left: 725px; 
-    bottom:580px;
+    /*position: relative; 
+    left: 850px; 
+    bottom:540px;*/
   }
   
   #login-button-img {
@@ -146,19 +170,41 @@ a:focus {
     display: inline-block;
     background: #4285F4;
     color: white;
-    width: 185px;
-    height: 38px;
+    width: 100px;
+    height: 38px; 
     border-radius: 0px;
     border: thin solid #888;
     box-shadow: 1px 1px 1px grey;
     white-space: nowrap;
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     outline: none;
-    vertical-align: middle;
 
-    position:relative; 
-    left: 725px; 
-    bottom:580px;
+
+    /*position: relative; 
+    left: 850px; 
+    bottom:540px;*/
   }
+
+  .timer-button {
+    background-color: #8bcdcd;
+    padding: 11px 22px;
+    height: 44px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.timer-button:hover {
+  background-color: #f3f3f3;
+  color: #2c3e50;
+  font-weight: 300;
+}

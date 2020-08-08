@@ -11,7 +11,7 @@
   <li><router-link to='/test' >CSSTest</router-link></li>
   </ul>
   </nav><!-- /#nav-main -->
-<router-view></router-view>
+  <router-view></router-view>
   <!-- <div id="app">
       <img id= "logo" alt="potatologo" src="./assets/logo.png"> 
       <h1>
@@ -59,4 +59,5 @@
 <style>
   @import './assets/styles/test.css';
   @import './assets/styles/timer.css';
+  @import url('https://fonts.googleapis.com/css?family=Chilanka');
 </style>
