@@ -2,6 +2,8 @@ const express = require('express');
 const mongodb = require('mongodb');
 const keys = require('../config/keys');
 const router = express.Router();
+const dbURI = 'mongodb+srv://Chx:MongoDBChx@pomodorocluster.fvkty.mongodb.net/Timer?retryWrites=true&w=majority';
+const dbName = 'Timer';
 
 //Post user ID to DB
 router.post('/user', async(req,res) => {
@@ -15,7 +17,6 @@ router.post('/user', async(req,res) => {
 	if (searchRes == null) {
 		console.log("Result is null. Add new user");
 		await user.insertOne({
-			// console.log(req.body);
 			_id: req.body.userID,
 			reward: 0
 		});
@@ -26,9 +27,7 @@ router.post('/user', async(req,res) => {
 		console.log("Existing user. Go get category and reward");
 		// Append reward to result list
 		temp_list.push(searchRes.reward);
-		// console.log(temp_list);
 	}
-	// console.log(searchRes);
 	// load current user category
 	const category = db.collection('Category');
 	// Get categories from db based on query criteria
@@ -40,7 +39,6 @@ router.post('/user', async(req,res) => {
 	}
 	// Send back categories under current category and user reward
 	res.send(temp_list)
-	// res.send(await category.find({userID: req.body.userID}).toArray());
 });
 
 
@@ -64,7 +62,6 @@ router.post('/category', async(req,res) => {
   }
   // Send back updated categories
   res.send(temp_list)
-  // res.send(await category.find({userID: req.body.userID}).toArray());
 });
 
 
@@ -74,7 +71,6 @@ router.get('/task', async(req,res) => {
   // Get category collection from DB
   const db = await loadDB();
   const task = db.collection('Task');
-  // console.log(req.query);
   // Get tasks from db based on query criteria
   let temp_res = await task.find({userID: req.query.userID, categName: req.query.categName}).toArray();
   // Parse result before sending back
@@ -84,7 +80,6 @@ router.get('/task', async(req,res) => {
   }
   // Send back tasks under current category
   res.send(temp_list)
-  // res.send(await task.find({userID: req.query.userID, categName: req.query.categName}).toArray());
 });
 
 
@@ -111,7 +106,6 @@ router.post('/task', async(req,res) => {
   }
   // Send back updated tasks
   res.send(temp_list)
-  // res.send(await task.find({userID: req.body.userID, categName: req.body.categName}).toArray());
 });
 
 
@@ -140,9 +134,6 @@ router.post('/taskSpan', async(req,res) => {
 			$inc: {taskSpan: (-1)*req.body.subtraction}
 		}
 	);
-	// let current_task = await task.findOne({userID: req.body.userID, categName: req.body.categName, taskName: req.body.taskName});
-	// console.log("in post taskSpan");
-	// console.log(current_task);
 	res.sendStatus(200)
 });
 
@@ -158,12 +149,9 @@ router.post('/reward', async(req,res) => {
 	let result = await user.findOneAndUpdate(
 		{_id: req.body.userID},
 		{
-			// $inc: {reward: (+1)*req.body.userReward}
 			$inc: {reward: 1}
 		}
 	);
-	// let result = await user.findOne({_id: req.body.userID})
-	// console.log(result);
 	res.sendStatus(200)
 });
 
@@ -188,23 +176,12 @@ router.post('/status', async(req,res) => {
 // Utility function
 async function loadDB() {
   const client = await mongodb.MongoClient.connect(
-    'mongodb+srv://Chx:MongoDBChx@pomodorocluster.fvkty.mongodb.net/Timer?retryWrites=true&w=majority',
+    dbURI,
     {
       useNewUrlParser: true, useUnifiedTopology: true
     }
   );
-  return client.db('Timer');
+  return client.db(dbName);
 }
 
 module.exports = router;
-
-// try {
-//  const user = await loadUserCollection();
-//  console.log(user);
-//  user.insertOne({
-//    _id: req.body.userID
-//  });
-//  res.status(201).send();
-// } catch(e) {
-//  console.log(e);
-// };
