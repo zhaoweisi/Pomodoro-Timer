@@ -1,7 +1,7 @@
 <template>
   <div id="login">
      <div class="logopic">
-      <img alt="potatologo" src="@/assets/home_Artwork.png" class="logo" width=500>
+      <img alt="potatologo" src="@/assets/home_Artwork.png"  width=500>
       <h1>
         Potato Timer
       </h1>
