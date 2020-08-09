@@ -12,6 +12,7 @@ const cors = require('cors');
 
 // Create express instance
 const app = express();
+console.log(keys);
 
 // Handle Cors
 // https://enable-cors.org/server_expressjs.html

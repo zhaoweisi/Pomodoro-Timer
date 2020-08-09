@@ -2,8 +2,9 @@ const express = require('express');
 const mongodb = require('mongodb');
 const keys = require('../config/keys');
 const router = express.Router();
-const dbURI = 'mongodb+srv://Chx:MongoDBChx@pomodorocluster.fvkty.mongodb.net/Timer?retryWrites=true&w=majority';
+const dbURI = keys.mongoURI;
 const dbName = 'Timer';
+
 
 //Post user ID to DB
 router.post('/user', async(req,res) => {
