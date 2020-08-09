@@ -48,26 +48,6 @@
     width: 800px;
 }
 
-/*
- .timer-button {
-    background-color: #e2e4e5;
-     Gray 
-    border: none;
-    color: white;
-    padding: 11px 22px;
-    height: 44px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    color: black;
-    border: 2px solid black;
-    border-radius: 10px;
-}  */
-
 
 
 /* END TIMER */
@@ -76,19 +56,8 @@ h1 {
     padding-top: 80px;
 }
 
-/* input box */
 
-.input {
-    /* width: 100%; */
-    padding: 12px 20px;
-    margin: 8px;
-}
 
-.input:focus {
-    outline: none;
-    border: 1px solid rgb(40, 169, 255);
-    box-shadow: 0 0 0 4px rgb(174, 219, 255);
-}
 
 .category-list {
     /* padding-left:40px; */

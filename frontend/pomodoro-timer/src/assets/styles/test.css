@@ -38,7 +38,6 @@ img {
 /* NAVIGATION */
 nav li {
 	list-style: none;	
-	margin: 0;	
 }
 
 #nav-main {
@@ -48,7 +47,6 @@ nav li {
 }
 
 #nav-main li {
-  font-size: 20px;
 	float: left;
   margin-right: 6em;
   border-right: 2px solid #f9d56e;
@@ -69,22 +67,13 @@ a:focus {
 
 /* Layout */
 
-
 #footer {
   font-size: 10px;;
   padding: 1em 5%;
   background-color:  #8bcdcd;
 }
 
-/*
-.logo {
-  size: 130%;
-  display:block;
-  margin-left: auto;
-  margin-right: auto;
-  width:50%
-}
-*/
+
 
 #smile {
   float: right;
@@ -94,20 +83,12 @@ a:focus {
 
 
 #login {
-    /*font-family: Avenir, Helvetica, Arial, sans-serif;*/
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
     margin-top: 10px;
   }
 
 #about {
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     text-align: left;
-    color: #2c3e50;
     margin-left: 50px;
     margin-right: 50px;
     margin-bottom: 50px;
@@ -115,7 +96,6 @@ a:focus {
   }
 
   .welcomeinfor {
-    font-family: "Chilanka";
     font-weight: bold;
     font-size: 22px;
   }
@@ -128,23 +108,18 @@ a:focus {
     background-color: #f1c5c5;
     width: 600px;
     border-radius: 10px;
-    left:28%;
+    left:30%;
     position: relative;
+    padding:10px;
+    margin-bottom: 10px;
   }
 
   .setCatg ul li{
-   /* background-color: #8bcdcd; */
-    width: 600px;
-    margin: 0px;
-    border-radius: 10px;
-    left:28%;
     list-style-position: inside;
   }
 
   .setTask {
-    /* background-color: #f1c5c5; */
     width: 600px;
-    border-radius: 10px;
     left:28%;
     position: relative;
   }
@@ -156,10 +131,6 @@ a:focus {
     vertical-align: middle;
     border-style: unset;
     outline: none;
-
-    /*position: relative; 
-    left: 850px; 
-    bottom:540px;*/
   }
   
   #login-button-img {
@@ -180,11 +151,6 @@ a:focus {
     font-size: 16px;
     font-weight: bold;
     outline: none;
-
-
-    /*position: relative; 
-    left: 850px; 
-    bottom:540px;*/
   }
 
   .timer-button {
@@ -204,7 +170,24 @@ a:focus {
 }
 
 .timer-button:hover {
-  background-color: #f3f3f3;
+  background-color: #e5edb7;
   color: #2c3e50;
   font-weight: 300;
 }
+
+
+.input {
+  /* width: 100%; */
+  padding: 12px 20px;
+  margin: 8px;
+  border-radius: 10px;
+  border:none;
+}
+
+.input:focus {
+  outline: none;
+  border: 5px solid #8bcdcd;
+  /*box-shadow: 0 0 0 4px rgb(174, 219, 255);*/
+}
+
+/* Timer */
