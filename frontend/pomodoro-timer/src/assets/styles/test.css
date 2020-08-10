@@ -131,10 +131,15 @@ a:focus {
     vertical-align: middle;
     border-style: unset;
     outline: none;
+    
+    
   }
   
   #login-button-img {
     border-radius: 0px;
+    position: relative;
+    left: 365px;
+    bottom: 65px
   }
   
   .google-signout-button {
@@ -151,6 +156,9 @@ a:focus {
     font-size: 16px;
     font-weight: bold;
     outline: none;
+    position: relative;
+    left: 365px;
+    bottom: 60px
   }
 
   .timer-button {

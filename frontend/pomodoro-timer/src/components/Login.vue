@@ -1,12 +1,6 @@
 <template>
   <div id="login">
-     <div class="logopic">
-      <img alt="potatologo" src="@/assets/home_Artwork.png"  width=500>
-      <h1>
-        Potato Timer
-      </h1>
-    </div>
-  <div class="signinout">
+    <div class="signinout">
     <!-- sign in button -->
       <button v-google-signin-button="clientId" class="google-signin-button" v-if="!isSignInButtonHidden">
             <img id= "login-button-img" alt="Google sign-in" src="../assets/icons/btn_google_signin_dark_normal_web.png" width:/>
@@ -15,6 +9,14 @@
       <button v-google-signout-button="clientId" class="google-signout-button" v-if="isSignOutButtonHidden"> Sign out
       </button>
     </div>
+
+     <div class="logopic">
+      <img alt="potatologo" src="@/assets/home_Artwork.png"  width=500>
+      <h1>
+        Potato Timer
+      </h1>
+    </div>
+  
     <br>
 
 
@@ -24,8 +26,6 @@
     <img v-if="isSignInButtonHidden" v-bind:src="this.imgURL" />
     <br>
     <br>
-    <div v-if="isSignInButtonHidden"> Your Name:   {{this.userFullName}}</div>
-    <div v-if="isSignInButtonHidden"> Your Email:   {{this.userEmail}}</div><br>
 		<div v-if="isSignInButtonHidden"> Your Reward:   {{this.userReward}}</div>
     </div><!-- welcomeinfor -->
     <br>
