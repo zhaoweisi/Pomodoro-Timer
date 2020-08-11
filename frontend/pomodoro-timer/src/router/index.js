@@ -4,7 +4,6 @@ import Vue from 'vue'
 // import Home from '../components/Home'
 import About from '../components/About'
 import Login from '../components/Login'
-import CSSTest from '../components/CSSTest'
 // import App from '../App.vue'
 
 // 1. install VueRouter plugin
@@ -32,10 +31,6 @@ const routes = [
 		path: '/about',
 		component: About
 	},
-	{
-		path: '/test',
-		component: CSSTest
-	}
 ]
 
 const router = new VueRouter({

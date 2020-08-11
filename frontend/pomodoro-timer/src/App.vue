@@ -8,7 +8,6 @@
   <ul>
   <li><router-link to='/' >Home</router-link></li>
   <li><router-link to='/about' >About</router-link></li>
-  <li><router-link to='/test' >CSSTest</router-link></li>
   </ul>
   </nav><!-- /#nav-main -->
   <router-view></router-view>
@@ -58,6 +57,5 @@
 
 <style>
   @import './assets/styles/test.css';
-  @import './assets/styles/timer.css';
   @import url('https://fonts.googleapis.com/css?family=Chilanka');
 </style>
